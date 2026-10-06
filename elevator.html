@@ -518,6 +518,38 @@ body.anima .slide:not(.entra) .flusso3 > *{opacity:0;transform:translateY(20px)}
 .slide.entra .passi4 .p.c{animation:battito 2.4s 2.2s ease-in-out infinite}
 @keyframes battito{50%{box-shadow:0 0 0 14px rgba(29,83,71,.14);transform:translateY(-4px)}}
 @media print{.flusso3 > *{opacity:1 !important;transform:none !important}.flusso3 .arco::before{transform:none !important}.foto .kb{animation:none !important}}
+
+/* ---- confronto a tier (v10): le tre soluzioni come tre piani di un listino */
+.tier3{display:grid;grid-template-columns:1fr 1fr 1.12fr;gap:26px;align-items:end;margin-top:6px}
+.tier{background:#fff;border:1px solid var(--linea);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.tier .testa{padding:22px 26px 18px;border-bottom:1px solid var(--linea);display:flex;gap:16px;align-items:center}
+.tier .testa .ic{width:64px;height:64px;border-radius:14px;background-size:cover;background-position:center;flex:none}
+.tier .testa .nm{font:700 34px/1 var(--titoli);color:var(--ink)}
+.tier .testa .tg{font:500 14px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);margin-top:6px}
+.tier ul{list-style:none;margin:0;padding:12px 26px 6px}
+.tier li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;padding:9px 0;font-size:19px;line-height:1.3;color:var(--ink);border-bottom:1px dashed var(--linea)}
+.tier li:last-child{border-bottom:0}
+.tier li::before{content:"✓";width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--testo);background:var(--acc-velo);color:var(--acc)}
+.tier li.no{color:#B3B8B2}
+.tier li.no::before{content:"–";background:#F0F0EC;color:#B3B8B2}
+.tier .esito{margin:auto 18px 18px;padding:14px 18px;border-radius:14px;font:600 19px/1.3 var(--titoli);background:var(--segnale-velo);color:var(--segnale)}
+.tier .esito small{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;opacity:.8}
+.tier.noi{background:var(--acc);border-color:var(--acc);color:#fff;transform:translateY(-14px);box-shadow:0 28px 60px rgba(29,83,71,.38);position:relative}
+.tier.noi .testa{border-bottom-color:rgba(255,255,255,.18)}
+.tier.noi .testa .nm{color:#fff;font-family:var(--marchio);font-weight:400}
+.tier.noi .testa .nm em{font-style:normal;color:#E9C9A0}
+.tier.noi .testa .tg{color:#CFE3DA}
+.tier.noi .testa svg{width:64px;height:64px;flex:none;--acc:#fff;--linea:rgba(255,255,255,.3)}
+.tier.noi li{color:#fff;border-bottom-color:rgba(255,255,255,.15)}
+.tier.noi li::before{background:#E9C9A0;color:var(--acc)}
+.tier.noi .esito{background:#fff;color:var(--acc)}
+.tier.noi li.no{color:rgba(255,255,255,.42)}.tier.noi li.no::before{background:rgba(255,255,255,.12);color:rgba(255,255,255,.55)}
+.tier .nastro{position:absolute;top:16px;right:-38px;transform:rotate(35deg);background:#E39A4B;color:#fff;font:600 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 46px}
+.slide.entra .tier{animation:opEntra .9s cubic-bezier(.2,.8,.2,1) both}
+.slide.entra .tier:nth-child(2){animation-delay:.25s}
+.slide.entra .tier.noi{animation:tierSale 1.3s cubic-bezier(.2,.8,.2,1) .8s both, alone 2.6s 2.4s ease-in-out infinite}
+@keyframes tierSale{from{opacity:0;transform:translateY(70px) scale(.96)}to{opacity:1;transform:translateY(-14px)}}
+.slide.entra .tier.noi li{animation:opEntra .5s ease both}
 </style>
 </head>
 <body>
@@ -560,19 +592,16 @@ body.anima .slide:not(.entra) .flusso3 > *{opacity:0;transform:translateY(20px)}
 </section>
 
 <section class="slide marca">
-  <div class="corpo largo" style="padding:56px 90px 76px">
+  <div class="corpo largo" style="padding:52px 100px 70px">
     <p class="kicker">Gli altri e noi</p>
-    <h1 style="font-size:58px;margin-bottom:30px">Due soluzioni serie, <span class="ink">e un problema che resta aperto.</span></h1>
-    <div class="operatori">
-      <div class="op"><div class="op-img" style="background-image:url(img/v2-porta.jpg)"></div><div class="op-corpo">
-        <p class="op-tipo">I marketplace</p><h3>MioDottore e simili</h3>
-        <dl><dt>Cosa fanno</dt><dd>portano pazienti nuove</dd><dt>Cosa risolvono</dt><dd>l'agenda vuota</dd><dt class="aperto">Resta aperto</dt><dd class="aperto">chi molla a metà percorso</dd></dl></div></div>
-      <div class="op"><div class="op-img" style="background-image:url(img/v2-fotocopie.jpg)"></div><div class="op-corpo">
-        <p class="op-tipo">I gestionali</p><h3>Software per lo studio</h3>
-        <dl><dt>Cosa fanno</dt><dd>diete più rapide, e un'app per la paziente</dd><dt>Cosa risolvono</dt><dd>il tempo dello studio</dd><dt class="aperto">Resta aperto</dt><dd class="aperto">chi molla a metà percorso</dd></dl></div></div>
-      <div class="op noi"><div class="op-logo"><svg><use href="#logo"/></svg><span>Hexa<em>well</em></span></div><div class="op-corpo">
-        <p class="op-tipo">Il metodo</p><h3>Un framework sull'abbandono</h3>
-        <dl><dt>Cosa fa</dt><dd>segue la paziente fra una visita e l'altra</dd><dt>Cosa risolve</dt><dd>l'abbandono a metà percorso</dd><dt class="aperto">La paziente</dt><dd class="aperto">arriva al traguardo</dd></dl></div></div>
+    <h1 style="font-size:56px;margin-bottom:34px">Tre soluzioni per lo studio. <span class="ink">Una sola porta la paziente al traguardo.</span></h1>
+    <div class="tier3">
+      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-porta.jpg)"></div><div><div class="nm">Marketplace</div><div class="tg">MioDottore e simili · riempiono l'agenda</div></div></div>
+        <ul><li>Porta pazienti nuove</li><li class="no">Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
+      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-fotocopie.jpg)"></div><div><div class="nm">Gestionale</div><div class="tg">Software per lo studio · fanno risparmiare tempo</div></div></div>
+        <ul><li class="no">Porta pazienti nuove</li><li>Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
+      <div class="tier noi"><span class="nastro">Il metodo</span><div class="testa"><svg><use href="#logo"/></svg><div><div class="nm">Hexa<em>well</em></div><div class="tg">Per chi vende traguardi</div></div></div>
+        <ul><li class="no" style="animation-delay:1.60s">Porta pazienti nuove</li><li style="animation-delay:1.78s">Piano e diario sul telefono</li><li style="animation-delay:1.96s">Esagono: come lei tende a mollare</li><li style="animation-delay:2.14s">Patto con traguardo e data</li><li style="animation-delay:2.32s">Un assistente che la segue ogni giorno</li><li style="animation-delay:2.50s">Lo studio vende un programma</li></ul><div class="esito"><small>La paziente</small>arriva al traguardo</div></div>
     </div>
   </div>
   <div class="piede">Elevator pitch · 03 / 07</div>
