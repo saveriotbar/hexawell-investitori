@@ -457,10 +457,45 @@ body.presenta .avanz{display:block}
 .gloss p{font-size:19px;line-height:1.45;color:var(--muto);margin:0}
 .sez-g{font:500 14px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--tenue);margin:0 0 14px}
 .link-deck{display:inline-block;margin-top:26px;font:600 20px var(--titoli);color:#E9C9A0;text-decoration:none;border-bottom:2px solid rgba(233,201,160,.5)}
+
+/* elevator v2: slide che spiegano */
+.tab3{display:grid;grid-template-columns:200px 1fr 1fr 1.15fr;margin-top:8px;border-radius:18px;overflow:hidden}
+.tab3 > div{padding:18px 22px;font-size:21px;line-height:1.38;color:var(--muto);border-top:1px solid var(--linea);background:#fff}
+.tab3 > .h{font:500 14px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);background:transparent;border-top:0;padding-top:0}
+.tab3 > .h.noi{color:#fff;background:var(--acc);padding-top:18px;border-radius:16px 16px 0 0}
+.tab3 > .r{font:500 14px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--segnale);background:transparent}
+.tab3 > .noi{background:var(--acc);color:#fff;font-weight:600;border-top-color:rgba(255,255,255,.18)}
+.tab3 > .noi.ult{border-radius:0 0 16px 16px}
+.tab3 > .ap{color:var(--segnale);font-weight:600}
+.passi4{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:stretch;margin:10px 0 30px}
+.passi4 .p{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:24px 22px}
+.passi4 .p.c{background:var(--acc);border-color:var(--acc);color:#fff}
+.passi4 .p b{display:block;font:500 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--segnale);margin-bottom:10px}
+.passi4 .p.c b{color:#E9C9A0}
+.passi4 .p h3{font:700 30px/1.05 var(--titoli);margin:0 0 10px;color:var(--acc)}.passi4 .p.c h3{color:#fff}
+.passi4 .p p{font-size:18px;line-height:1.45;margin:0;color:var(--muto)}.passi4 .p.c p{color:rgba(255,255,255,.88)}
+.passi4 .fr{display:grid;place-items:center;font:400 34px var(--titoli);color:var(--segnale)}
+.flusso3{display:grid;grid-template-columns:270px 1fr 270px 1fr 270px;align-items:center;margin:40px 0 60px}
+.flusso3 .nodo{border-radius:22px;padding:40px 22px;text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+.flusso3 .nodo.noi{background:#fff}
+.flusso3 .nodo h3{font:700 38px/1.1 var(--titoli);margin:0;color:#fff}.flusso3 .nodo.noi h3{color:var(--acc)}
+.flusso3 .nodo small{display:block;font-size:19px;color:rgba(255,255,255,.7);margin-top:6px}.flusso3 .nodo.noi small{color:var(--muto)}
+.flusso3 .arco{position:relative;text-align:center;padding:0 14px}
+.flusso3 .arco::before{content:"";display:block;height:3px;background:#E39A4B;margin:0 0 14px;border-radius:2px}
+.flusso3 .arco::after{content:"";position:absolute;right:8px;top:-7px;border:8px solid transparent;border-left:12px solid #E39A4B}
+.flusso3 .arco span{font:600 26px/1.3 var(--titoli);color:#F2C08A}
+.flusso3 .arco small{display:block;font-size:19px;line-height:1.4;color:rgba(255,255,255,.75);margin-top:6px}
+.canali{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.canali div{border-top:2px solid rgba(255,255,255,.3);padding-top:14px}
+.canali b{display:block;font:700 27px/1.2 var(--titoli);color:#fff;margin-bottom:6px}
+.canali p{font-size:20px;line-height:1.45;color:rgba(255,255,255,.75);margin:0}
+.mini-num{display:flex;gap:40px;margin-top:22px}
+.mini-num div{font-size:17px;line-height:1.4;color:var(--muto);max-width:260px}
+.mini-num b{display:block;font:700 38px/1 var(--titoli);color:var(--acc);margin-bottom:6px}
 </style>
 </head>
 <body>
-<button class="presenta-btn" title="Schermo intero · va da solo in meno di due minuti · frecce per scorrere · Esc per uscire">▶ Presenta</button>
+<button class="presenta-btn" title="Schermo intero · va da solo in poco più di due minuti · frecce per scorrere · Esc per uscire">▶ Presenta</button>
 <div class="avanz"><i></i></div>
 <svg width="0" height="0" style="position:absolute">
   <symbol id="logo" viewBox="0 0 100 100">
@@ -478,7 +513,8 @@ body.presenta .avanz{display:block}
   <div class="corpo">
     <div class="marchio"><svg><use href="#logo"/></svg><div class="parola">Hexa<em>well</em></div></div>
     <p class="payoff">Per i nutrizionisti che vendono traguardi</p>
-    <p class="frase">Elevator pitch per gli investitori<br><b>Saverio D'Appio</b> · ottobre 2026</p>
+    <p class="frase">Un metodo e un assistente personale che portano la paziente del nutrizionista <b>al traguardo, in dodici settimane</b>.</p>
+    <p class="nota" style="font-size:18px;margin-top:30px">Elevator pitch per gli investitori · Saverio D'Appio · ottobre 2026</p>
   </div>
   <div class="piede">Elevator pitch · 01 / 07</div>
 </section>
@@ -488,53 +524,60 @@ body.presenta .avanz{display:block}
   <div class="corpo">
     <p class="kicker">Il problema</p>
     <h1>Venti sedie. <span class="ink">A marzo metà delle facce sono nuove.</span></h1>
-    <p class="frase">Le pazienti mollano prima del traguardo. Lo studio rifà una prima visita dopo l'altra, e si fa pagare a visita.</p>
-    <div class="etichette stg"><span>Una prima visita dopo l'altra</span><span class="calda">Pagato a visita</span></div>
+    <p class="frase" style="margin-bottom:30px">Fra una visita e l'altra la paziente resta sola con la fatica, e molla prima del traguardo.</p>
+    <ul class="tratti stg">
+      <li><span><b>Una prima visita dopo l'altra</b>: anamnesi, piano e fiducia da rifare da capo, ogni mese.</span></li>
+      <li><span><b>Pagato a visita</b>: senza un percorso che arrivi in fondo, l'incasso dura quanto la paziente.</span></li>
+    </ul>
   </div>
   <div class="piede">Elevator pitch · 02 / 07</div>
 </section>
 
-<section class="slide">
-  <div class="foto" style="background-image:url(img/v2-verticale.jpg)"></div>
-  <div class="corpo">
-    <p class="kicker">La soluzione</p>
-    <h1>Un traguardo ambizioso ha una data.</h1>
-    <p class="frase">Hexawell dà al nutrizionista <b>un metodo e un assistente personale</b> che segue la paziente fra una visita e l'altra. Lo studio vende un programma di 12 settimane, con un patto.</p>
-    <div class="etichette stg"><span>Esagono</span><span>Patto</span><span>Assistente</span><span class="calda">Traguardo</span></div>
+<section class="slide marca">
+  <div class="corpo largo" style="padding:60px 100px 80px">
+    <p class="kicker">Gli altri e noi</p>
+    <h1 style="font-size:58px;margin-bottom:26px">Due soluzioni serie, <span class="ink">e un problema che resta aperto.</span></h1>
+    <div class="tab3">
+      <div class="h"></div><div class="h">Marketplace · MioDottore</div><div class="h">Gestionali</div><div class="h noi">Hexawell</div>
+      <div class="r">Cosa fanno</div><div>Un catalogo di professionisti: portano pazienti nuove</div><div>Aiutano a scrivere le diete e danno un'app alla paziente</div><div class="noi">Seguono la paziente fra una visita e l'altra, con un metodo</div>
+      <div class="r">Cosa risolvono</div><div>L'agenda vuota</div><div>Il tempo dello studio</div><div class="noi">L'abbandono a metà percorso</div>
+      <div class="r">La paziente</div><div class="ap">Arriva, e spesso molla a metà</div><div class="ap">Segue il piano finché regge</div><div class="noi ult">Arriva al traguardo</div>
+    </div>
   </div>
   <div class="piede">Elevator pitch · 03 / 07</div>
 </section>
 
-
 <section class="slide marca">
-  <div class="corpo largo" style="padding:64px 110px 80px">
-    <p class="kicker">La differenza, in parole chiare</p>
-    <h1 style="font-size:60px;margin-bottom:30px">Gli altri aiutano lo studio a lavorare. <span class="ink">Noi portiamo la paziente al traguardo.</span></h1>
-    <div class="diff2">
-      <div><p class="sez-g">Cosa c'è sul mercato</p><div class="conf stg">
-        <div><b>Marketplace · MioDottore</b><span>Pazienti nuove</span><small>utili per riempire l'agenda; chi molla a metà resta fuori</small></div>
-        <div><b>Gestionali</b><span>Diete più rapide e un'app</span><small>semplificano il lavoro; chi molla a metà resta fuori</small></div>
-        <div class="noi"><b>Hexawell</b><span>Un metodo sull'abbandono</span><small>lavora sul motivo per cui si molla, per dodici settimane</small></div>
-      </div></div>
-      <div><p class="sez-g">Il framework, termine per termine</p><div class="gloss stg">
-        <div><h3>Esagono</h3><p>Sei grandezze (cibo, movimento, corpo, salute, testa, persone intorno) che dicono come quella paziente tende a mollare.</p></div>
-        <div><h3>Traguardo su misura</h3><p>Cinque misure verificabili: il massimo raggiungibile in 12 settimane. L'obiettivo è il 75%.</p></div>
-        <div><h3>Patto</h3><p>Obiettivi concordati con la paziente, con una data e due firme. Il peso resta fuori.</p></div>
-        <div><h3>Assistente</h3><p>Un agente che parla con lei ogni giorno, legge comportamenti e silenzi, e agisce.</p></div>
-      </div></div>
+  <div class="corpo largo" style="padding:60px 90px 80px">
+    <p class="kicker">Cosa facciamo</p>
+    <h1 style="font-size:56px;margin-bottom:26px">Un metodo per arrivare al traguardo, <span class="ink">e un assistente che lo fa girare.</span></h1>
+    <div class="passi4 stg">
+      <div class="p"><b>Prima della visita</b><h3>Esagono</h3><p>Sei grandezze, dal cibo alle persone intorno, dicono come lei tende a mollare.</p></div><div class="fr">→</div>
+      <div class="p"><b>Giorno 1</b><h3>Patto</h3><p>Cinque misure e una data: il traguardo su misura. L'obiettivo è il 75%.</p></div><div class="fr">→</div>
+      <div class="p c"><b>Per 12 settimane</b><h3>Assistente</h3><p>Parla con lei ogni giorno, legge comportamenti e silenzi, e agisce.</p></div><div class="fr">→</div>
+      <div class="p"><b>Settimana 12</b><h3>Traguardo</h3><p>Il patto si rilegge misura per misura.</p></div>
     </div>
+    <div class="barra" style="font-size:24px">Il nutrizionista non è più solo: ha un assistente personale che segue ogni paziente.</div>
+    <p class="nota">Oggi in produzione: esagono, report, diario, assistente, cruscotto. Con la raccolta: l'assistente che agisce da solo e le interviste.</p>
   </div>
   <div class="piede">Elevator pitch · 04 / 07</div>
 </section>
 
 <section class="slide scura">
-  <div class="corpo largo">
-    <p class="kicker">Perché funziona</p>
-    <h1>Le funzioni si copiano. <span class="ink">Il metodo si accumula.</span></h1>
-    <div class="numeri stg">
-      <div class="numero"><div class="v" style="font-size:62px;line-height:1.1">In produzione</div><div class="k">esagono, report, diario, assistente e cruscotto, su pazienti vere</div></div>
-      <div class="numero"><div class="v" style="font-size:62px;line-height:1.1"><span class="conta" data-a="39">39</span> € + <span class="conta" data-a="12">12</span> €</div><div class="k">al mese lo studio, più ogni paziente nel programma</div></div>
-      <div class="numero calda"><div class="v" style="font-size:62px;line-height:1.1">23-26 mila</div><div class="k">nutrizionisti in Italia (stima su dati ONB 2025)</div></div>
+  <div class="corpo largo" style="padding:60px 100px 80px">
+    <p class="kicker">Come lo vendiamo</p>
+    <h1 style="font-size:58px;margin-bottom:20px">Lo studio paga Hexawell, <span class="ink">la paziente paga il programma.</span></h1>
+    <div class="flusso3">
+      <div class="nodo noi"><h3>Hexawell</h3><small>il metodo e l'assistente</small></div>
+      <div class="arco"><span>39 € al mese + 12 € a paziente</span><small>l'abbonamento dello studio</small></div>
+      <div class="nodo"><h3>Lo studio</h3><small>il nutrizionista</small></div>
+      <div class="arco"><span>Un programma di 12 settimane</span><small>al prezzo dello studio, pagato all'inizio</small></div>
+      <div class="nodo"><h3>La paziente</h3><small>con un traguardo e una data</small></div>
+    </div>
+    <div class="canali stg">
+      <div><b>Campagna fondatori</b><p>Chi investe diventa cliente: listino −30% per 24 mesi.</p></div>
+      <div><b>Vendita negli studi</b><p>Un sales manager dedicato, socio della società.</p></div>
+      <div><b>Video e demo</b><p>Il metodo si mostra prima di venderlo. Esempio: 30 pazienti = 399 € al mese.</p></div>
     </div>
   </div>
   <div class="piede">Elevator pitch · 05 / 07</div>
@@ -542,10 +585,18 @@ body.presenta .avanz{display:block}
 
 <section class="slide">
   <div class="foto" style="background-image:url(img/v2-innovatore.jpg)"></div>
-  <div class="corpo">
-    <p class="kicker">Chi cerchiamo</p>
-    <h1>Il nutrizionista stanco di vendere la visita singola.</h1>
-    <p class="frase">Un innovatore che vuole vendere un programma, con un risultato scritto in un patto. <b>È il nostro investitore e il nostro primo cliente.</b></p>
+  <div class="corpo" style="padding:64px 100px 76px 90px">
+    <p class="kicker">A chi lo vendiamo</p>
+    <h1 style="font-size:54px">Al nutrizionista stanco di vendere la visita singola.</h1>
+    <ul class="tratti stg">
+      <li><span><b>Un innovatore</b>, che si è già scelto un verticale come la menopausa o lo sport.</span></li>
+      <li><span><b>Vuole riposizionarsi</b>: vendere un programma, con un risultato scritto in un patto.</span></li>
+      <li><span><b>Cerca un framework</b> che va oltre la singola consulenza nutrizionale.</span></li>
+    </ul>
+    <div class="mini-num stg">
+      <div><b>23-26 mila</b>nutrizionisti in Italia (stima su dati ONB 2025)</div>
+      <div><b>7 mln</b>donne fra 45 e 59 anni: il primo verticale (ISTAT 2025)</div>
+    </div>
   </div>
   <div class="piede">Elevator pitch · 06 / 07</div>
 </section>
@@ -554,16 +605,16 @@ body.presenta .avanz{display:block}
   <div class="corpo largo">
     <p class="kicker">L'operazione</p>
     <div class="grande"><span class="conta" data-a="72500">72.500</span> €</div>
-    <p class="frase">Startup innovativa, con la detrazione fiscale per chi investe. <b>Un traguardo ambizioso ha una data.</b></p>
+    <p class="frase">Startup innovativa, con la detrazione fiscale per chi investe. Servono a portare il metodo nei primi studi fondatori e a costruire con loro l'assistente che agisce da solo. <b>Chi investe diventa il nostro primo cliente.</b></p>
     <div><a class="link-deck" href="./">La presentazione completa →</a></div>
-    <div class="firma" style="margin-top:34px"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Founder<br>saverio.dappio@gmail.com</span></div>
+    <div class="firma" style="margin-top:30px"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Founder<br>saverio.dappio@gmail.com</span></div>
   </div>
   <div class="piede">Elevator pitch · 07 / 07</div>
 </section>
 <script>
 // elevator pitch: va da solo (circa 90 secondi); frecce, rotella e clic per andare avanti e indietro
 const SLIDE = [...document.querySelectorAll('.slide')];
-const DURATE = [7, 17, 20, 22, 15, 13, 15];
+const DURATE = [9, 20, 26, 26, 26, 22, 16];
 let cur = 0, auto = null;
 document.body.classList.add('anima');
 function conta(el) { const a = +el.dataset.a, t0 = performance.now();
