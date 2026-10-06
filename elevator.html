@@ -550,11 +550,28 @@ body.anima .slide:not(.entra) .flusso3 > *{opacity:0;transform:translateY(20px)}
 .slide.entra .tier.noi{animation:tierSale 1.3s cubic-bezier(.2,.8,.2,1) .8s both, alone 2.6s 2.4s ease-in-out infinite}
 @keyframes tierSale{from{opacity:0;transform:translateY(70px) scale(.96)}to{opacity:1;transform:translateY(-14px)}}
 .slide.entra .tier.noi li{animation:opEntra .5s ease both}
+
+/* ---- telefono e tablet (v11): pulsanti a schermo, avviso di rotazione */
+.nav-m{display:none;position:fixed;right:12px;bottom:12px;z-index:40;gap:10px}
+body.presenta .nav-m{display:flex}
+.nav-m button{width:46px;height:46px;border-radius:50%;border:0;background:rgba(16,47,40,.62);color:#fff;font:600 26px/1 var(--testo);box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nav-m button.x{font-size:20px;background:rgba(0,0,0,.55)}
+.ruota{display:none}
+@media (orientation:portrait) and (max-width:900px){
+  body.presenta .ruota{display:block;position:fixed;left:12px;right:12px;top:12px;z-index:41;background:rgba(16,47,40,.92);color:#fff;
+    font:500 15px/1.4 var(--testo);text-align:center;padding:10px 14px;border-radius:12px}
+}
+@media print{.nav-m,.ruota{display:none !important}}
+
+/* telefono: la pagina resta larga quanto lo schermo, niente impaginazione da computer */
+html,body{overflow-x:hidden;max-width:100%}
 </style>
 </head>
 <body>
 <button class="presenta-btn" title="Schermo intero · va da solo in poco più di due minuti · frecce per scorrere · Esc per uscire">▶ Presenta</button>
 <div class="avanz"><i></i></div>
+<div class="nav-m"><button data-v="-1" aria-label="Indietro">‹</button><button data-v="1" aria-label="Avanti">›</button><button class="x" data-v="x" aria-label="Esci">✕</button></div>
+<div class="ruota">Gira il telefono in orizzontale: le slide si vedono meglio.</div>
 <svg width="0" height="0" style="position:absolute">
   <symbol id="logo" viewBox="0 0 100 100">
     <g stroke="var(--linea)" stroke-width="1.6">
@@ -687,7 +704,8 @@ function conta(el) { const a = +el.dataset.a, t0 = performance.now();
   requestAnimationFrame(passo); }
 function entra(sl) { sl.classList.remove('entra'); void sl.offsetWidth; sl.classList.add('entra');
   sl.querySelectorAll('.conta').forEach(el => setTimeout(() => conta(el), 500)); }
-const scala = () => document.documentElement.style.setProperty('--s', Math.min(innerWidth / 1600, innerHeight / 900));
+const LARGO = () => Math.min(innerWidth, window.visualViewport ? visualViewport.width : innerWidth), ALTO = () => Math.min(innerHeight, window.visualViewport ? visualViewport.height : innerHeight);
+const scala = () => document.documentElement.style.setProperty('--s', Math.min(LARGO() / 1600, ALTO() / 900));
 const barra = document.querySelector('.avanz i');
 function mostra(i) {
   if (i < 0 || i > SLIDE.length - 1) return;  // oltre l'ultima (o prima della prima) non si riparte
@@ -701,7 +719,7 @@ function mostra(i) {
 function presenta() { document.body.classList.add('presenta'); scala(); mostra(0); document.documentElement.requestFullscreen?.().catch(() => {}); }
 function esci() { document.body.classList.remove('presenta'); clearTimeout(auto); }
 document.querySelector('.presenta-btn').addEventListener('click', presenta);
-addEventListener('resize', scala);
+addEventListener('resize', scala); window.visualViewport && visualViewport.addEventListener('resize', scala);
 document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement) esci(); });
 function slideInVista() { let best = 0, area = -1;
   SLIDE.forEach((sl, k) => { const r = sl.getBoundingClientRect(); const v = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0); if (v > area) { area = v; best = k; } });
@@ -715,10 +733,24 @@ addEventListener('keydown', e => {
 let fermo = false;
 addEventListener('wheel', e => { if (!document.body.classList.contains('presenta') || fermo) return;
   fermo = true; setTimeout(() => fermo = false, 700); vai(e.deltaY > 0 ? 1 : -1); }, { passive: true });
-document.addEventListener('click', e => { if (document.body.classList.contains('presenta') && !e.target.closest('a')) vai(1); });
+
 const vista = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !document.body.classList.contains('presenta') && !e.target.classList.contains('entra')) entra(e.target); }), { threshold: .35 });
 SLIDE.forEach(sl => vista.observe(sl));
-const adatta = () => document.documentElement.style.setProperty('--z', Math.min(1, (innerWidth - 40) / 1600));
+
+// ---- telefono e tablet: swipe, tocco ai lati, pulsanti a schermo
+const PRES = () => document.body.classList.contains('presenta');
+function esciTutto() { esci(); if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {}); }
+document.querySelectorAll('.nav-m button').forEach(b => b.addEventListener('click', e => { e.stopPropagation();
+  const v = b.dataset.v; if (v === 'x') esciTutto(); else if (v === '1') vai(1); else vai(-1); }));
+let tx = null, ty = null, swipe = false;
+addEventListener('touchstart', e => { if (!PRES()) return; tx = e.touches[0].clientX; ty = e.touches[0].clientY; swipe = false; }, { passive: true });
+addEventListener('touchend', e => { if (!PRES() || tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { swipe = true; dx < 0 ? vai(1) : vai(-1); } }, { passive: true });
+document.addEventListener('click', e => { if (!PRES() || swipe || e.target.closest('a,button')) { swipe = false; return; }
+  e.clientX > innerWidth / 3 ? vai(1) : vai(-1); });
+
+const adatta = () => document.documentElement.style.setProperty('--z', Math.min(1, ((window.visualViewport ? Math.min(innerWidth, visualViewport.width) : innerWidth) - (innerWidth < 700 ? 16 : 40)) / 1600));
 adatta(); addEventListener('resize', adatta);
 </script>
 </body>
