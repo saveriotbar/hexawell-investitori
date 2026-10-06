@@ -435,6 +435,32 @@ body.anima .slide:not(.entra) .corpo > *, body.anima .slide:not(.entra) .stg > *
 .op dt.aperto{color:var(--segnale)}.op dd.aperto{color:var(--segnale)}
 .op.noi dt.aperto{color:#E9C9A0}.op.noi dd.aperto{color:#F2C08A}
 .op dd{font-size:26px}
+
+/* ---- wow (v9): dissolvenza fra slide, zoom lento sulle foto, Hexawell che sale, frecce che si disegnano */
+body.presenta .slide.attiva{animation:entraSlide .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes entraSlide{from{opacity:0;transform:translate(-50%,-50%) scale(calc(var(--s,1) * .96))}to{opacity:1;transform:translate(-50%,-50%) scale(var(--s,1))}}
+.foto{position:relative;overflow:hidden}
+.foto .kb{position:absolute;inset:0;background-size:cover;background-position:inherit}
+.slide.entra .foto .kb{animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1)}}
+.slide.entra .op{animation:opEntra .9s cubic-bezier(.2,.8,.2,1) both}
+.slide.entra .op:nth-child(2){animation-delay:.25s}
+.slide.entra .op.noi{animation:opSale 1.3s cubic-bezier(.2,.8,.2,1) .8s both, alone 2.6s 2.4s ease-in-out infinite}
+@keyframes opEntra{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes opSale{from{opacity:0;transform:translateY(70px) scale(.96)}to{opacity:1;transform:translateY(-16px)}}
+@keyframes alone{0%,100%{box-shadow:0 26px 56px rgba(29,83,71,.35)}50%{box-shadow:0 26px 70px rgba(29,83,71,.55),0 0 0 10px rgba(29,83,71,.08)}}
+.slide.entra .op.noi .op-logo svg{animation:gira1 1.4s cubic-bezier(.2,.8,.2,1) 1.2s both}
+@keyframes gira1{from{transform:rotate(-120deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
+.flusso3 > *{transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+body.anima .slide:not(.entra) .flusso3 > *{opacity:0;transform:translateY(20px)}
+.slide.entra .flusso3 > *:nth-child(2){transition-delay:.7s}.slide.entra .flusso3 > *:nth-child(3){transition-delay:1.3s}
+.slide.entra .flusso3 > *:nth-child(4){transition-delay:1.9s}.slide.entra .flusso3 > *:nth-child(5){transition-delay:2.5s}
+.flusso3 .arco::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.6,0,.2,1)}
+.slide.entra .flusso3 .arco:nth-child(2)::before{transform:scaleX(1);transition-delay:.9s}
+.slide.entra .flusso3 .arco:nth-child(4)::before{transform:scaleX(1);transition-delay:2.1s}
+.slide.entra .passi4 .p.c{animation:battito 2.4s 2.2s ease-in-out infinite}
+@keyframes battito{50%{box-shadow:0 0 0 14px rgba(29,83,71,.14);transform:translateY(-4px)}}
+@media print{.flusso3 > *{opacity:1 !important;transform:none !important}.flusso3 .arco::before{transform:none !important}.foto .kb{animation:none !important}}
 </style>
 </head>
 <body>
@@ -798,6 +824,10 @@ addEventListener('wheel', e => { if (!document.body.classList.contains('presenta
 
 
 // ---- entrata delle slide e numeri che contano
+
+// zoom lento sulle foto: un livello interno che si può animare senza invadere il testo
+document.querySelectorAll('.foto').forEach(f => { const d = document.createElement('div'); d.className = 'kb';
+  d.style.backgroundImage = f.style.backgroundImage; d.style.backgroundPosition = f.style.backgroundPosition || 'center'; f.appendChild(d); });
 document.body.classList.add('anima');
 function conta(el) { const a = +el.dataset.a, t0 = performance.now();
   const passo = now => { const p = Math.min(1, (now - t0) / 1400), v = Math.round(a * (1 - Math.pow(1 - p, 3)));
