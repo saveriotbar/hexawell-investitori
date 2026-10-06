@@ -763,7 +763,8 @@ new IntersectionObserver(e => { if (document.body.classList.contains('presenta')
 const SLIDE = [...document.querySelectorAll('.slide')];
 let cur = 0;
 const scala = () => document.documentElement.style.setProperty('--s', Math.min(innerWidth / 1600, innerHeight / 900));
-function mostra(i, faseIniziale = 0) { cur = Math.max(0, Math.min(SLIDE.length - 1, i));
+function mostra(i, faseIniziale = 0) { if (i < 0 || i > SLIDE.length - 1) return;  // oltre l'ultima non si riparte
+  cur = i;
   SLIDE.forEach((sl, k) => sl.classList.toggle('attiva', k === cur)); entra(SLIDE[cur]);
   if (SLIDE[cur] === M) avviaMetodo(faseIniziale); else fermaMetodo(); }
 function presenta() { document.body.classList.add('presenta'); scala(); mostra(slideInVista()); document.documentElement.requestFullscreen?.().catch(() => {}); }
