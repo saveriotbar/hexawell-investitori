@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hexawell · investitori</title>
+<!-- Deck per gli investitori, v2 del 06/10/2026: verde, una slide = un'immagine + una frase.
+     Quello che si dice a voce sta in note-oratore.md. Immagini generate su Higgsfield (img/v2-*).
+     v1 (più testo, due temi) in archivio-v1/. PDF: python _export.py -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#1D5347; --acc-scuro:#143D34; --acc-velo:#E7EFEB; --segnale:#A8641A; --segnale-velo:#FBF2E6;
+  --ink:#171B19; --muto:#55605B; --tenue:#8B948F; --linea:#D9DCD5; --carta:#FFFFFF; --fondo:#F7F6F1;
+  --titoli:"Barlow",system-ui,sans-serif; --testo:"Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace; --marchio:Constantia,Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#E6E5E1;font-family:var(--testo);color:var(--ink);-webkit-font-smoothing:antialiased}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden;background:var(--fondo);display:flex;
+  margin:28px auto;zoom:var(--z,1);box-shadow:0 4px 30px rgba(0,0,0,.08)}
+@page{size:1600px 900px;margin:0}
+@media print{body{background:#fff}.slide{margin:0;zoom:1;box-shadow:none;break-after:page}}
+
+.foto{width:700px;height:900px;flex:none;background-size:cover;background-position:center}
+.corpo{flex:1;padding:90px 110px 90px 100px;display:flex;flex-direction:column;justify-content:center}
+.corpo.largo{padding:80px 120px 90px}
+.piede{position:absolute;right:64px;bottom:32px;font:500 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue)}
+
+.kicker{font:500 16px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--segnale);margin:0 0 26px}
+h1{font:700 76px/1.04 var(--titoli);color:var(--acc);margin:0 0 30px;letter-spacing:-.015em}
+h1 .ink{color:var(--ink)}
+.frase{font-size:30px;line-height:1.42;color:var(--muto);margin:0;max-width:760px}
+.frase b{color:var(--ink);font-weight:600}
+.etichette{display:flex;flex-wrap:wrap;gap:14px;margin:42px 0 0}
+.etichette span{font:600 21px/1 var(--titoli);padding:14px 22px;border-radius:999px;background:var(--acc-velo);color:var(--acc)}
+.etichette span.calda{background:var(--segnale-velo);color:var(--segnale)}
+.nota{font-size:16px;color:var(--tenue);margin:26px 0 0}
+.tbd{display:inline-block;font:500 .7em/1.2 var(--mono);color:#8A5A00;background:#FFF3D6;border:1.5px dashed #E0A93A;
+  padding:4px 10px;border-radius:6px;vertical-align:.12em}
+
+/* copertina */
+.marchio{display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.marchio svg{width:104px;height:104px}
+.parola{font:400 116px/1 var(--marchio);color:var(--ink);letter-spacing:-.01em}
+.parola em{font-style:normal;color:var(--acc)}
+.payoff{font:500 18px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin:0 0 56px}
+
+/* 84 giorni */
+.striscia{margin:0 0 34px}
+.striscia .et{display:flex;justify-content:space-between;font:500 16px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);margin:0 0 14px}
+.striscia .et b{color:var(--ink);font-weight:500}
+.giorni{display:flex;gap:3px}
+.giorni i{flex:1;height:70px;border-radius:4px;background:var(--linea)}
+.giorni i.on{background:var(--acc)}
+.giorni i.cede{background:var(--segnale)}
+.giorni i.visita{background:var(--ink)}
+
+/* ciclo */
+.ciclo{display:grid;grid-template-columns:520px 1fr;gap:40px;align-items:center;width:100%}
+.ciclo svg{width:100%;height:760px}
+
+/* numeri grandi */
+.numeri{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:10px 0 0}
+.numero{border-top:4px solid var(--acc);padding-top:22px}
+.numero.calda{border-color:var(--segnale)}
+.numero .v{font:700 108px/1 var(--titoli);color:var(--acc);letter-spacing:-.02em}
+.numero.calda .v{color:var(--segnale)}
+.numero .k{font-size:24px;line-height:1.4;color:var(--muto);margin-top:12px}
+.grande{font:700 260px/.85 var(--titoli);color:var(--acc);letter-spacing:-.04em;margin:0 0 22px}
+
+/* team */
+.team{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px;margin-top:10px}
+.persona{border-radius:20px;padding:34px 30px;background:var(--carta);border:1px solid var(--linea);min-height:330px}
+.persona.io{background:var(--acc);color:#fff;border-color:var(--acc)}
+.persona .avatar{width:84px;height:84px;border-radius:50%;background:var(--acc-velo);margin-bottom:24px}
+.persona.io .avatar{background:rgba(255,255,255,.18)}
+.persona .ruolo{font:500 14px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:0 0 12px}
+.persona.io .ruolo{color:rgba(255,255,255,.75)}
+.persona h3{font:700 32px/1.1 var(--titoli);margin:0 0 12px}
+.persona p{font-size:19px;line-height:1.5;margin:0;color:var(--muto)}
+.persona.io p{color:rgba(255,255,255,.9)}
+
+/* linea del tempo */
+.tempo{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;position:relative}
+.tempo::before{content:"";position:absolute;left:0;right:0;top:15px;height:4px;background:var(--acc-velo)}
+.tappa{position:relative;padding:58px 30px 0 0}
+.tappa::before{content:"";position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 8px var(--fondo)}
+.tappa.dopo::before{background:var(--fondo);border:4px solid var(--acc)}
+.tappa .quando{font:500 16px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--segnale);margin:0 0 12px}
+.tappa h3{font:700 34px/1.1 var(--titoli);margin:0 0 10px;color:var(--ink)}
+.tappa p{font-size:21px;line-height:1.45;margin:0;color:var(--muto)}
+
+/* operazione */
+.termini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 40px;margin-top:40px}
+.termine{border-top:1px solid var(--linea);padding-top:16px}
+.termine .k{font:500 14px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);margin:0 0 10px}
+.termine .v{font:600 30px/1.1 var(--titoli)}
+
+/* chiusura */
+.chiusura{background:var(--acc);color:#fff}
+.chiusura h1{color:#fff}
+.chiusura .kicker{color:#E9C9A0}
+.cerchio{font:400 64px/1.2 var(--marchio);margin:0 0 40px}
+.missione{font-size:26px;line-height:1.5;color:rgba(255,255,255,.88);max-width:1150px;margin:0 0 60px}
+.firma{display:flex;align-items:center;gap:20px;font:500 17px/1.5 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.8)}
+.firma svg{width:64px;height:64px;--acc:#fff;--linea:rgba(255,255,255,.3)}
+.chiusura .piede{color:rgba(255,255,255,.5)}
+
+/* mercato: due tipi */
+.duetipi{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin:6px 0 34px}
+.tipo{display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:center}
+.tipo .img{height:400px;border-radius:16px;background-size:cover;background-position:center}
+.tipo .k{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 12px}
+.tipo h3{font:700 36px/1.08 var(--titoli);margin:0 0 14px;color:var(--ink)}
+.tipo p{font-size:20px;line-height:1.5;margin:0 0 16px;color:var(--muto)}
+.tipo .esito{display:inline-block;font:600 19px/1 var(--titoli);padding:12px 18px;border-radius:999px;background:var(--segnale-velo);color:var(--segnale)}
+.barra{background:var(--acc);color:#fff;border-radius:18px;padding:26px 36px;font:600 28px/1.3 var(--titoli)}
+
+/* confronto a tre */
+table.tre{width:100%;border-collapse:separate;border-spacing:0;margin:4px 0 34px}
+.tre th{font:500 15px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:0 24px 16px;color:var(--tenue)}
+.tre th.noi{color:var(--acc)}
+.tre td{padding:20px 24px;border-top:1px solid var(--linea);font-size:22px;line-height:1.35;color:var(--muto);vertical-align:top}
+.tre td.r{font:500 15px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);width:190px}
+.tre td.noi{background:var(--acc);color:#fff;font-weight:600;border-top-color:rgba(255,255,255,.2)}
+.tre tr:nth-child(2) td.noi{border-radius:16px 16px 0 0}
+.tre tr:last-child td.noi{border-radius:0 0 16px 16px}
+.segnali{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.segnali b{font:600 22px/1.3 var(--titoli);color:var(--ink);margin-right:6px}
+
+/* le tappe di Laura: schermata + chi fa cosa */
+.tappa-app{display:grid;grid-template-columns:900px 1fr;gap:56px;align-items:center;width:100%}
+.schermo{position:relative;height:720px;display:flex;gap:22px;align-items:center;justify-content:center}
+.schermo img{display:block;max-height:720px;max-width:100%;border-radius:14px;box-shadow:0 18px 50px rgba(23,27,25,.18);border:1px solid var(--linea);background:#fff}
+.schermo img.tel{max-height:640px;border-radius:34px;border:10px solid #1b1f1d}
+.passo-n{font:500 15px/1 var(--mono);letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;color:var(--segnale);margin:0 0 18px}
+.passo-n span{color:var(--tenue)}
+.tappa-app h1{font-size:58px;margin-bottom:30px}
+.chi{display:flex;flex-direction:column;gap:22px}
+.chi div{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:baseline}
+.chi .ch{font:500 14px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.chi p{font-size:21px;line-height:1.5;margin:0;color:var(--muto)}
+.chi p b{color:var(--ink);font-weight:600}
+.progresso{display:flex;gap:8px;margin:0 0 26px}
+.progresso i{width:46px;height:6px;border-radius:3px;background:var(--linea)}
+.progresso i.on{background:var(--acc)}
+
+/* oggi / con la raccolta */
+.oggi-poi{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px}
+.colonna{border-radius:20px;padding:34px 38px}
+.colonna.oggi{background:var(--acc);color:#fff}
+.colonna.poi{background:var(--carta);border:2px dashed var(--segnale)}
+.colonna h3{font:700 32px/1.1 var(--titoli);margin:0 0 6px}
+.colonna .sub{font:500 14px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;margin:0 0 22px}
+.colonna.oggi .sub{color:#CFE3DA}.colonna.poi .sub{color:var(--segnale)}
+.colonna ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+.colonna li{font-size:21px;line-height:1.4;padding-left:34px;position:relative}
+.colonna.oggi li::before{content:"✓";position:absolute;left:0;font-weight:700;color:#CFE3DA}
+.colonna.poi li{color:var(--muto)}
+.colonna.poi li::before{content:"+";position:absolute;left:4px;font-weight:700;color:var(--segnale)}
+
+/* differenza: tre operatori */
+.operatori{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:28px;align-items:stretch;margin-top:14px}
+.op{background:var(--carta);border:1px solid var(--linea);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.op-img{height:150px;background-size:cover;background-position:center;filter:grayscale(.3)}
+.op-logo{height:150px;display:flex;align-items:center;justify-content:center;gap:16px;background:var(--acc-scuro)}
+.op-logo svg{width:84px;height:84px;--acc:#fff;--linea:rgba(255,255,255,.3)}
+.op-logo span{font:400 58px/1 var(--marchio);color:#fff}.op-logo em{font-style:normal;color:#E9C9A0}
+.op-corpo{padding:24px 30px 28px}
+.op-tipo{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 8px}
+.op h3{font:700 32px/1.1 var(--titoli);color:var(--ink);margin:0 0 6px}
+.op dl{margin:0}
+.op dt{font:500 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);margin:20px 0 7px}
+.op dd{margin:0;font:600 28px/1.18 var(--titoli);color:var(--ink)}
+.op.noi{background:var(--acc);border-color:var(--acc);transform:translateY(-16px);box-shadow:0 26px 56px rgba(29,83,71,.35)}
+.op.noi h3,.op.noi dd{color:#fff}.op.noi dt{color:#CFE3DA}.op.noi .op-tipo{color:#E9C9A0}
+
+/* metodo animato */
+.metodo{flex:1;padding:52px 80px 70px;display:flex;flex-direction:column}
+.m-testa{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:26px}
+.m-testa h1{font-size:62px;margin:0}
+.m-fasi{list-style:none;margin:0;padding:0;display:flex;gap:8px;counter-reset:f}
+.m-fasi li{counter-increment:f;font:600 17px/1 var(--titoli);padding:11px 15px;border-radius:999px;background:var(--linea);color:var(--tenue);transition:all .4s}
+.m-fasi li::before{content:counter(f) " ";font-family:var(--mono);font-weight:500}
+.m-fasi li.fatta{background:var(--acc-velo);color:var(--acc)}
+.m-fasi li.ora{background:var(--acc);color:#fff;transform:scale(1.08)}
+.m-palco{position:relative;height:380px;display:grid;grid-template-columns:600px 1fr;gap:60px;align-items:center}
+.m-scene{position:relative;height:380px}
+.m-scena{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.m-scena.ora{opacity:1;transform:none}
+.m-testo .m-quando{font:500 17px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 16px}
+.m-testo h2{font:700 54px/1.05 var(--titoli);color:var(--acc);margin:0 0 18px}
+.m-testo p.m-frase{font-size:28px;line-height:1.42;color:var(--muto);margin:0;max-width:640px}
+.m-testo{transition:opacity .5s}.m-testo.cambia{opacity:0}
+/* esagono */
+.esa svg{width:360px;height:360px}
+.esa .forma{transform:scale(0);transform-origin:0 0;transition:transform 2.4s cubic-bezier(.2,.8,.2,1) .4s}
+.esa.ora .forma{transform:scale(1)}
+.esa .corto{opacity:0;transition:opacity .6s 3.2s}.esa.ora .corto{opacity:1}
+.esa .corto circle.p{animation:pulsa 1.6s infinite}
+@keyframes pulsa{0%{r:8;opacity:1}100%{r:30;opacity:0}}
+/* patto */
+.patto{width:560px;background:var(--carta);border:1px solid var(--linea);border-radius:20px;padding:24px 30px;box-shadow:0 14px 40px rgba(23,27,25,.08)}
+.patto .r{display:grid;grid-template-columns:1fr 110px 40px 120px;align-items:center;padding:11px 0;border-bottom:1px solid var(--linea);font-size:21px;opacity:0;transform:translateX(-14px);transition:all .5s}
+.patto .r b{font:600 22px var(--titoli)}.patto .r .og{color:var(--tenue)}.patto .r .fr{color:var(--segnale);text-align:center}.patto .r .tg{font:700 23px var(--titoli);color:var(--acc)}
+.patto .timbro{display:flex;gap:10px;margin-top:16px;opacity:0;transition:opacity .6s}
+.patto .timbro span{font:600 17px/1 var(--titoli);padding:10px 14px;border-radius:999px;background:var(--segnale-velo);color:var(--segnale)}
+.m-scena.ora .patto .r{opacity:1;transform:none}
+.m-scena.ora .patto .timbro{opacity:1;transition-delay:3.4s}
+/* telefono */
+.tel-m{width:230px;height:360px;border:10px solid #1b1f1d;border-radius:36px;background:var(--fondo);padding:26px 16px;display:flex;flex-direction:column;gap:12px}
+.tel-m .t{font:600 16px var(--titoli);color:var(--ink);text-align:center;margin-bottom:4px}
+.tel-m .pasto{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:12px;padding:13px 14px;font-size:17px;color:var(--ink)}
+.tel-m .pasto i{width:24px;height:24px;border-radius:50%;border:2px solid var(--linea)}
+.ogni .tel-m .pasto i{animation:spunta 6s infinite}
+.ogni .tel-m .pasto:nth-child(3) i{animation-delay:1.5s}.ogni .tel-m .pasto:nth-child(4) i{animation-delay:3s}
+@keyframes spunta{0%,10%{background:#fff;border-color:var(--linea)}18%,85%{background:var(--acc);border-color:var(--acc)}100%{background:#fff;border-color:var(--linea)}}
+.fumetto{max-width:250px;background:var(--acc);color:#fff;border-radius:18px 18px 18px 4px;padding:16px 18px;font-size:19px;line-height:1.4;margin-left:24px}
+.segnale .tel-m{opacity:.55;filter:grayscale(1)}
+.segnale .tel-m .pasto i{border-style:dashed}
+.chips{display:flex;flex-direction:column;gap:12px;margin-left:24px}
+.chips span{font:600 20px/1 var(--titoli);padding:14px 18px;border-radius:999px;background:var(--segnale-velo);color:var(--segnale);opacity:0;transform:scale(.8);transition:all .5s}
+.m-scena.ora .chips span{opacity:1;transform:none}
+/* cruscotto */
+.crus{width:540px;background:var(--carta);border:1px solid var(--linea);border-radius:20px;padding:22px 26px;box-shadow:0 14px 40px rgba(23,27,25,.08)}
+.crus .t{font:700 22px var(--titoli);margin-bottom:12px}
+.crus .righe{position:relative;height:232px}
+.crus .p{position:absolute;left:0;right:0;height:52px;display:flex;align-items:center;gap:14px;padding:0 14px;border-radius:12px;font-size:19px;transition:top 1.2s cubic-bezier(.3,.9,.3,1) 1.2s,background .6s 1.2s}
+.crus .p i{width:14px;height:14px;border-radius:50%}
+.crus .p em{margin-left:auto;font-style:normal;font-size:16px;color:var(--tenue)}
+.crus .p.laura{top:174px}.m-scena.ora .crus .p.laura{top:0;background:#FBE9E4}
+.m-scena.ora .crus .p.altro{transform:translateY(58px);transition:transform 1.2s cubic-bezier(.3,.9,.3,1) 1.2s}
+.crus .chiama{display:inline-block;margin-top:10px;font:600 18px var(--titoli);padding:12px 18px;border-radius:999px;background:var(--acc);color:#fff;opacity:0;transition:opacity .5s 3.2s}
+.m-scena.ora .crus .chiama{opacity:1;animation:batte 1.4s 3.4s infinite}
+@keyframes batte{50%{transform:scale(1.06)}}
+/* traguardo */
+.arrivo{width:560px}
+.arrivo .num{font:700 120px/1 var(--titoli);color:var(--acc);letter-spacing:-.03em}
+.arrivo .bar{position:relative;height:42px;border-radius:10px;background:var(--linea);margin:18px 0 10px}
+.arrivo .bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:10px;background:var(--acc);transition:width 3s cubic-bezier(.2,.8,.2,1) .5s}
+.m-scena.ora .arrivo .bar i{width:76%}
+.arrivo .bar b{position:absolute;left:75%;top:-12px;bottom:-12px;width:3px;background:var(--segnale)}
+.arrivo .bar small{position:absolute;left:75%;top:-36px;transform:translateX(-50%);font:500 14px var(--mono);letter-spacing:.1em;color:var(--segnale);white-space:nowrap}
+.arrivo p{font-size:18px;color:var(--tenue);margin:0}
+/* linea dei giorni */
+.m-linea{margin-top:auto;position:relative;padding-top:44px}
+.m-linea .giorni i{height:50px;transition:background .35s}
+.m-linea .giorni i.muto{background:transparent;border:2px dashed var(--segnale)}
+.m-linea .giorni i.sett{margin-left:7px}
+.m-linea .bandiera{position:absolute;top:0;font:500 15px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:9px 12px;border-radius:8px;opacity:0;transition:opacity .6s}
+.m-linea .bandiera.vis{opacity:1}
+.m-linea .b1{left:0;background:var(--acc-velo);color:var(--acc)}
+.m-linea .b84{right:0;background:var(--segnale);color:#fff}
+.m-linea .b84.arrivata{background:var(--acc)}
+.m-sett{display:grid;grid-template-columns:repeat(12,1fr);margin-top:10px;font:500 13px/1 var(--mono);letter-spacing:.1em;color:var(--tenue)}
+.m-stampa{display:none}
+@media print{
+  .m-palco{display:none}.m-stampa{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;height:380px}
+  .m-stampa div{background:var(--carta);border:1px solid var(--linea);border-radius:16px;padding:20px 24px}
+  .m-stampa b{display:block;font:500 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--segnale);margin-bottom:10px}
+  .m-stampa h3{font:700 26px/1.1 var(--titoli);color:var(--acc);margin:0 0 8px}
+  .m-stampa p{font-size:17px;line-height:1.45;color:var(--muto);margin:0}
+  .presenta-btn{display:none}
+}
+
+/* modalità presentazione */
+.presenta-btn{position:fixed;top:14px;right:14px;z-index:20;font:600 14px/1 var(--testo);padding:11px 16px;border-radius:999px;border:0;background:var(--acc);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+body.presenta{background:#000;overflow:hidden}
+body.presenta .presenta-btn{display:none}
+body.presenta .slide{display:none;position:fixed;left:50%;top:50%;margin:0;zoom:1;box-shadow:none;transform:translate(-50%,-50%) scale(var(--s,1))}
+body.presenta .slide.attiva{display:flex}
+
+/* metodo v5 */
+.mt{flex:1;padding:46px 80px 54px;display:flex;flex-direction:column}
+.mt h1{font-size:60px;margin:0 0 26px}
+.mt-track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-bottom:22px}
+.mt-track::before{content:"";position:absolute;left:8%;right:8%;top:22px;height:4px;background:var(--linea)}
+.mt-st{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.mt-st i{width:46px;height:46px;border-radius:50%;background:var(--fondo);border:4px solid var(--linea);display:grid;place-items:center;font:600 18px var(--mono);font-style:normal;color:var(--tenue);transition:all .4s}
+.mt-st span{font:600 19px/1.15 var(--titoli);color:var(--tenue);transition:color .4s}
+.mt-st small{font:500 13px var(--mono);letter-spacing:.1em;color:var(--segnale)}
+.mt-st.fatta i{background:var(--acc-velo);border-color:var(--acc);color:var(--acc)}.mt-st.fatta span{color:var(--acc)}
+.mt-st.ora i{background:var(--acc);border-color:var(--acc);color:#fff;transform:scale(1.18)}.mt-st.ora span{color:var(--ink)}
+.mt-palco{position:relative;height:390px}
+.mt-sc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:40px;opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}
+.mt-sc.ora{opacity:1;transform:none}
+.mt-cap{display:grid;grid-template-columns:470px 1fr;gap:40px;align-items:start;border-top:1px solid var(--linea);padding-top:20px;transition:opacity .45s}
+.mt-cap.cambia{opacity:0}
+.mt-cap .q{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 10px}
+.mt-cap h2{font:700 40px/1.05 var(--titoli);color:var(--acc);margin:0}
+.mt-cap p{font-size:25px;line-height:1.42;color:var(--muto);margin:0}
+.mt-nota{font-size:14px;color:var(--tenue);margin:12px 0 0}
+/* 1 esagono */
+.mt-esa svg{width:600px;height:390px}
+.mt-esa .forma{transform:scale(0);transform-origin:0 0;transition:transform 2.4s cubic-bezier(.2,.8,.2,1) .3s}
+.mt-sc.ora.mt-esa .forma{transform:scale(1)}
+.mt-esa .corto{opacity:0;transition:opacity .6s 2.8s}.mt-sc.ora.mt-esa .corto{opacity:1}
+.mt-esa .p{animation:pulsa 1.6s infinite}
+.mt-nota-esa{max-width:300px;font:600 26px/1.25 var(--titoli);color:var(--segnale);opacity:0;transition:opacity .6s 3.2s}
+.mt-sc.ora .mt-nota-esa{opacity:1}
+.mt-nota-esa small{display:block;font:400 19px/1.4 var(--testo);color:var(--muto);margin-top:10px}
+/* 2 visita */
+.foglio{width:250px;height:310px;background:#fff;border:1px solid var(--linea);border-radius:14px;box-shadow:0 14px 36px rgba(23,27,25,.1);padding:22px;display:flex;flex-direction:column;gap:12px}
+.foglio b{font:700 20px/1.15 var(--titoli);color:var(--ink)}
+.foglio em{font-style:normal;font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--segnale)}
+.foglio i{display:block;height:9px;border-radius:5px;background:var(--linea)}
+.foglio.app i{background:none;border-bottom:2px solid #C9CEC6;border-radius:0;transform:rotate(-1.5deg)}
+.foglio.app i:nth-child(odd){width:80%;transform:rotate(1deg)}
+.foglio.rep{opacity:0;transform:translateX(-30px);transition:all .8s}
+.mt-sc.ora .foglio.rep{opacity:1;transform:none}
+.mt-sc.ora .foglio.rep.d2{transition-delay:1.6s}.mt-sc.ora .foglio.rep.d1{transition-delay:.8s}
+.foglio.rep.cl{border-top:6px solid var(--acc)}.foglio.rep.pz{border-top:6px solid var(--segnale)}
+.freccia{font:400 64px var(--titoli);color:var(--acc)}
+/* 3 patto */
+.mt-patto{width:600px;background:#fff;border:1px solid var(--linea);border-radius:20px;padding:22px 30px;box-shadow:0 14px 40px rgba(23,27,25,.08)}
+.mt-patto .r{display:grid;grid-template-columns:1fr 110px 40px 120px;align-items:center;padding:10px 0;border-bottom:1px solid var(--linea);font-size:21px;opacity:0;transform:translateX(-14px);transition:all .5s}
+.mt-patto .r b{font:600 22px var(--titoli)}.mt-patto .og{color:var(--tenue)}.mt-patto .fr{color:var(--segnale);text-align:center}.mt-patto .tg{font:700 23px var(--titoli);color:var(--acc)}
+.mt-sc.ora .mt-patto .r{opacity:1;transform:none}
+.mt-data{display:flex;flex-direction:column;gap:14px;opacity:0;transition:opacity .7s 3.2s}
+.mt-sc.ora .mt-data{opacity:1}
+.mt-data div{font:700 30px/1.1 var(--titoli);color:var(--ink)}
+.mt-data span{font:600 19px/1 var(--titoli);padding:12px 16px;border-radius:999px;background:var(--segnale-velo);color:var(--segnale);align-self:flex-start}
+.firme{display:flex;gap:26px;margin-top:8px}.firme p{margin:0;width:150px;border-top:2px solid var(--ink);padding-top:6px;font-size:15px;color:var(--tenue)}
+/* 4 piano */
+.tel-p{width:220px;height:350px;border:10px solid #1b1f1d;border-radius:36px;background:var(--fondo);padding:24px 14px;display:flex;flex-direction:column;gap:10px}
+.tel-p b{font:700 17px var(--titoli);text-align:center;margin-bottom:4px}
+.tel-p span{background:#fff;border-radius:10px;padding:11px 12px;font-size:15px;color:var(--ink)}
+.link{font:600 20px var(--titoli);color:var(--acc);display:flex;flex-direction:column;align-items:center;gap:6px}
+/* 5 ciclo */
+.mt-ciclo{display:grid;grid-template-columns:250px 380px 290px 330px;gap:20px;align-items:center}
+.flusso{display:flex;flex-direction:column;gap:12px}
+.flusso p{margin:0 0 4px;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+.flusso span{font:600 19px/1.2 var(--titoli);padding:12px 16px;border-radius:12px;opacity:0;transform:translateX(-10px);transition:all .5s}
+.flusso.in span{background:var(--acc-velo);color:var(--acc)}
+.flusso.out span{background:var(--segnale-velo);color:var(--segnale)}
+.mt-sc.ora .flusso span{opacity:1;transform:none}
+.mt-ciclo svg{width:380px;height:350px}
+.giro{transform-box:view-box;transform-origin:200px 205px;animation:gira 6s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.muscoli{text-align:center}
+.muscoli svg{width:330px;height:300px}
+.muscoli .sett{font:700 30px var(--titoli);color:var(--acc)}
+.muscoli .sett small{display:block;font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);margin-top:4px}
+.muscoli polygon.vivo{transition:all 1.2s}
+/* 6 traguardo */
+.mt-arrivo{width:820px}
+.mt-arrivo .riga{display:grid;grid-template-columns:200px 1fr 70px;gap:18px;align-items:center;margin-bottom:14px;font-size:20px}
+.mt-arrivo .tr{position:relative;height:30px;border-radius:8px;background:var(--linea)}
+.mt-arrivo .tr i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:8px;background:var(--acc);transition:width 2.4s cubic-bezier(.2,.8,.2,1)}
+.mt-arrivo .tr b{position:absolute;left:75%;top:-8px;bottom:-8px;width:3px;background:var(--segnale)}
+.mt-arrivo .val{font:700 22px var(--titoli);color:var(--acc)}
+.mt-media{font:700 120px/1 var(--titoli);color:var(--acc);letter-spacing:-.03em;text-align:center}
+.mt-media small{display:block;font:500 15px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--segnale);margin-top:8px}
+.mt-stampa{display:none}
+@media print{
+  .mt-palco,.mt-cap{display:none}
+  .mt-stampa{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+  .mt-stampa div{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:18px 22px}
+  .mt-stampa b{display:block;font:500 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--segnale);margin-bottom:8px}
+  .mt-stampa h3{font:700 25px/1.1 var(--titoli);color:var(--acc);margin:0 0 6px}
+  .mt-stampa p{font-size:17px;line-height:1.42;color:var(--muto);margin:0}
+}
+/* team */
+.sez-t{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--tenue);margin:0 0 14px}
+.squadra{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:30px}
+.contributi{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.pers{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start;background:#fff;border:1px solid var(--linea);border-radius:18px;padding:22px 24px}
+.pers.io{background:var(--acc);border-color:var(--acc);color:#fff}
+.pers .ini{width:70px;height:70px;border-radius:50%;background:var(--acc-velo);color:var(--acc);display:grid;place-items:center;font:700 24px var(--titoli)}
+.pers.io .ini{background:rgba(255,255,255,.18);color:#fff}
+.pers .ru{font:500 13px/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--segnale);margin:0 0 6px}
+.pers.io .ru{color:#E9C9A0}
+.pers h3{font:700 26px/1.1 var(--titoli);margin:0 0 8px}
+.pers p{font-size:17px;line-height:1.45;margin:0;color:var(--muto)}.pers.io p{color:rgba(255,255,255,.88)}
+.mini{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:18px 18px}
+.mini .ini{width:52px;height:52px;border-radius:50%;background:var(--segnale-velo);color:var(--segnale);display:grid;place-items:center;font:700 19px var(--titoli);margin-bottom:12px}
+.mini .ru{font:500 12px/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--segnale);margin:0 0 6px}
+.mini h3{font:700 21px/1.1 var(--titoli);margin:0 0 6px}
+.mini p{font-size:15px;line-height:1.42;margin:0;color:var(--muto)}
+.giorni i.poco{background:#9FBDB2}
+
+/* cosa cambia */
+.cambia3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:10px}
+.cambia3 > div{background:#fff;border:1px solid var(--linea);border-radius:22px;padding:30px 32px 34px}
+.cambia3 > div.verde{background:var(--acc);border-color:var(--acc);color:#fff}
+.cambia3 svg{width:120px;height:90px;margin-bottom:18px}
+.cambia3 .n{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 10px}
+.cambia3 h3{font:700 36px/1.08 var(--titoli);color:var(--ink);margin:0 0 14px}
+.cambia3 p{font-size:21px;line-height:1.48;color:var(--muto);margin:0}
+.cambia3 .verde h3{color:#fff}.cambia3 .verde p{color:rgba(255,255,255,.88)}.cambia3 .verde .n{color:#E9C9A0}
+/* chi cerchiamo */
+.tratti{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;gap:16px}
+.tratti li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;font-size:23px;line-height:1.4;color:var(--muto)}
+.tratti li b{color:var(--ink);font-weight:600}
+.tratti li::before{content:"✓";width:44px;height:44px;border-radius:50%;background:var(--acc-velo);color:var(--acc);display:grid;place-items:center;font-weight:700;font-size:20px}
+
+/* ---- effetto presentazione (v7) */
+.slide.marca::after{content:"";position:absolute;width:980px;height:980px;right:-300px;bottom:-330px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 90,27 90,73 50,96 10,73 10,27' fill='none' stroke='%231D5347' stroke-width='1.2'/><polygon points='50,20 76,35 78,63 50,76 22,64 25,36' fill='none' stroke='%23A8641A' stroke-width='.8'/></svg>") center/contain no-repeat;opacity:.09;pointer-events:none}
+.slide.marca{background:radial-gradient(1200px 700px at 0% 0%, #FFFFFF 0%, var(--fondo) 60%)}
+.slide.scura{background:radial-gradient(1100px 800px at 85% 10%, #2A6A5A 0%, #1D5347 35%, #102F28 100%);color:#fff}
+.slide.scura::after{content:"";position:absolute;width:900px;height:900px;right:-260px;bottom:-320px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 90,27 90,73 50,96 10,73 10,27' fill='none' stroke='%23FFFFFF' stroke-width='1.2'/><polygon points='50,20 76,35 78,63 50,76 22,64 25,36' fill='none' stroke='%23E9C9A0' stroke-width='.8'/></svg>") center/contain no-repeat;opacity:.08;pointer-events:none}
+.slide.scura h1{color:#fff}.slide.scura h1 .ink{color:#E9C9A0}
+.slide.scura .kicker{color:#E9C9A0}
+.slide.scura .nota{color:rgba(255,255,255,.6)}.slide.scura .nota b{color:#fff !important}
+.slide.scura .piede{color:rgba(255,255,255,.45)}
+.slide.scura .striscia .et{color:rgba(255,255,255,.55)}.slide.scura .striscia .et b{color:#fff}
+.slide.scura .giorni i{background:rgba(255,255,255,.12)}
+.slide.scura .giorni i.on{background:#7CC4A6}.slide.scura .giorni i.poco{background:rgba(124,196,166,.45)}
+.slide.scura .giorni i.visita{background:#fff}.slide.scura .giorni i.cede{background:#E39A4B}
+.slide.scura .etichette span{background:rgba(255,255,255,.1);color:#CFE3DA}
+.slide.scura .etichette span.calda{background:rgba(227,154,75,.18);color:#F2C08A}
+.slide.scura .numero{border-top-color:rgba(255,255,255,.35)}.slide.scura .numero.calda{border-top-color:#E39A4B}
+.slide.scura .numero .v{color:#fff}.slide.scura .numero.calda .v{color:#F2B26B}
+.slide.scura .numero .k{color:rgba(255,255,255,.75)}
+.slide.scura .grande{color:#fff;text-shadow:0 10px 60px rgba(0,0,0,.25)}
+.slide.scura .termine{border-top-color:rgba(255,255,255,.2)}.slide.scura .termine .k{color:rgba(255,255,255,.55)}.slide.scura .termine .v{color:#fff}
+.chiusura{background:linear-gradient(90deg,rgba(16,47,40,.97) 0%,rgba(20,61,52,.92) 52%,rgba(20,61,52,.35) 100%),url(img/v2-verticale.jpg) right 30%/62% auto no-repeat,#143D34 !important}
+.chiusura .cerchio{font-size:58px;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.chiusura .corpo{max-width:960px}
+/* entrata: titolo, poi i blocchi uno alla volta */
+.slide .corpo > *, .slide .stg > *{transition:opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+body.anima .slide:not(.entra) .corpo > *, body.anima .slide:not(.entra) .stg > *{opacity:0;transform:translateY(28px)}
+.slide.entra .corpo > *:nth-child(2){transition-delay:.15s}.slide.entra .corpo > *:nth-child(3){transition-delay:.35s}
+.slide.entra .corpo > *:nth-child(4){transition-delay:.55s}.slide.entra .corpo > *:nth-child(5){transition-delay:.75s}
+.slide.entra .stg > *:nth-child(1){transition-delay:.45s}.slide.entra .stg > *:nth-child(2){transition-delay:.65s}
+.slide.entra .stg > *:nth-child(3){transition-delay:.85s}.slide.entra .stg > *:nth-child(4){transition-delay:1.05s}
+.slide.entra .stg > *:nth-child(5){transition-delay:1.25s}.slide.entra .stg > *:nth-child(6){transition-delay:1.45s}
+.slide.entra .stg > *:nth-child(n+7){transition-delay:1.6s}
+@media print{body.anima .slide .corpo > *, body.anima .slide .stg > *{opacity:1 !important;transform:none !important}}
+.tipo .esito.buono{background:var(--acc-velo);color:var(--acc)}
+.op dt.aperto{color:var(--segnale)}.op dd.aperto{color:var(--segnale)}
+.op.noi dt.aperto{color:#E9C9A0}.op.noi dd.aperto{color:#F2C08A}
+.op dd{font-size:26px}
+</style>
+</head>
+<body>
+<button class="presenta-btn" title="Schermo intero · frecce per scorrere · R fa ripartire l'animazione · Esc per uscire">▶ Presenta</button>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="logo" viewBox="0 0 100 100">
+    <g stroke="var(--linea)" stroke-width="1.6">
+      <line x1="50" y1="50" x2="50" y2="6"/><line x1="50" y1="50" x2="88" y2="28"/><line x1="50" y1="50" x2="88" y2="72"/>
+      <line x1="50" y1="50" x2="50" y2="94"/><line x1="50" y1="50" x2="12" y2="72"/><line x1="50" y1="50" x2="12" y2="28"/>
+    </g>
+    <polygon points="50,15 78,35 81,65 50,77 17,65 20,35" fill="var(--segnale-velo)" stroke="var(--segnale)" stroke-width="4" stroke-linejoin="round"/>
+    <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" fill="none" stroke="var(--acc)" stroke-width="4.5" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- 01 · copertina -->
+<section class="slide">
+  <div class="foto" style="background-image:url(img/v2-copertina.jpg)"></div>
+  <div class="corpo">
+    <div class="marchio"><svg><use href="#logo"/></svg><div class="parola">Hexa<em>well</em></div></div>
+    <p class="payoff">Per i nutrizionisti che vendono traguardi</p>
+    <p class="frase">Presentazione per gli investitori<br><b>Saverio D'Appio</b> · ottobre 2026</p>
+  </div>
+  <div class="piede">Riservato · 01 / 15</div>
+</section>
+
+<!-- 02 · il problema -->
+<section class="slide">
+  <div class="foto" style="background-image:url(img/v2-sedie.jpg)"></div>
+  <div class="corpo">
+    <p class="kicker">Il problema</p>
+    <h1>Venti sedie. <span class="ink">A marzo metà delle facce sono nuove.</span></h1>
+    <p class="frase">Le pazienti mollano prima del traguardo, e lo studio ricomincia da capo.</p>
+    <div class="etichette stg"><span>Una prima visita dopo l'altra</span><span class="calda">Pagato a visita</span></div>
+  </div>
+  <div class="piede">Riservato · 02 / 15</div>
+</section>
+
+<!-- 03 · il mercato: due tipi -->
+<section class="slide marca">
+  <div class="corpo largo">
+    <p class="kicker">Il mercato</p>
+    <h1>Oggi il nutrizionista ha due soluzioni serie.</h1>
+    <div class="duetipi stg">
+      <div class="tipo"><div class="img" style="background-image:url(img/v2-porta.jpg)"></div>
+        <div><p class="k">I marketplace</p><h3>Pazienti nuove</h3><p>MioDottore e simili: piattaforme serie che portano al nutrizionista pazienti nuove, come Airbnb con le case.</p><span class="esito buono">Riempiono l'agenda</span></div></div>
+      <div class="tipo"><div class="img" style="background-image:url(img/v2-fotocopie.jpg)"></div>
+        <div><p class="k">I gestionali</p><h3>Efficienza</h3><p>Aiutano a scrivere le diete e danno alla paziente un'app per seguirle: semplificano la vita a tutti e due.</p><span class="esito buono">Semplificano il lavoro</span></div></div>
+    </div>
+    <div class="barra">Sono utili e adottate. Resta aperto il motivo per cui le pazienti mollano a metà percorso.</div>
+  </div>
+  <div class="piede">Riservato · 03 / 15</div>
+</section>
+
+<!-- 04 · la differenza -->
+<section class="slide marca">
+  <div class="corpo largo" style="padding:60px 90px 80px">
+    <p class="kicker">La differenza</p>
+    <h1 style="font-size:64px;margin-bottom:30px">Lavoriamo sul perché <span class="ink">le pazienti se ne vanno.</span></h1>
+    <div class="operatori">
+      <div class="op"><div class="op-img" style="background-image:url(img/v2-porta.jpg)"></div><div class="op-corpo">
+        <p class="op-tipo">I marketplace</p><h3>MioDottore e simili</h3>
+        <dl><dt>Vendono</dt><dd>visibilità e contatti</dd><dt>Lo studio ottiene</dt><dd>pazienti nuove</dd><dt>La paziente</dt><dd>trova il nutrizionista</dd><dt class="aperto">Resta aperto</dt><dd class="aperto">chi molla a metà percorso</dd></dl></div></div>
+      <div class="op"><div class="op-img" style="background-image:url(img/v2-fotocopie.jpg)"></div><div class="op-corpo">
+        <p class="op-tipo">I gestionali</p><h3>Software per lo studio</h3>
+        <dl><dt>Vendono</dt><dd>efficienza</dd><dt>Lo studio ottiene</dt><dd>diete più rapide, e un'app per la paziente</dd><dt>La paziente</dt><dd>segue il piano dal telefono</dd><dt class="aperto">Resta aperto</dt><dd class="aperto">chi molla a metà percorso</dd></dl></div></div>
+      <div class="op noi"><div class="op-logo"><svg><use href="#logo"/></svg><span>Hexa<em>well</em></span></div><div class="op-corpo">
+        <p class="op-tipo">Il metodo</p><h3>Un framework sull'abbandono</h3>
+        <dl><dt>Vende</dt><dd>un metodo, e un assistente personale che segue la paziente</dd><dt>Lo studio ottiene</dt><dd>pazienti che restano, e un programma al posto della visita</dd><dt>La paziente</dt><dd>arriva al traguardo</dd><dt class="aperto">Lavora su</dt><dd class="aperto">il motivo per cui si molla</dd></dl></div></div>
+    </div>
+  </div>
+  <div class="piede">Riservato · 04 / 15</div>
+</section>
+
+<!-- 05 · un traguardo ha una data -->
+<section class="slide">
+  <div class="foto" style="background-image:url(img/v2-verticale.jpg)"></div>
+  <div class="corpo">
+    <p class="kicker">La soluzione</p>
+    <h1>Un traguardo ambizioso ha una data.</h1>
+    <p class="frase">Lo studio vende <b>un programma di 12 settimane</b> al posto della visita singola, con un patto firmato da tutti e due.</p>
+    <div class="etichette stg"><span>12 settimane</span><span>5 traguardi misurabili</span><span class="calda">1 data</span></div>
+  </div>
+  <div class="piede">Riservato · 05 / 15</div>
+</section>
+
+<!-- 06 · 4 su 84 -->
+<section class="slide scura">
+  <div class="corpo largo">
+    <p class="kicker">Come cambia lo studio</p>
+    <h1>Da 4 giorni su 84 <span class="ink">a 84 su 84.</span></h1>
+    <div class="striscia" style="margin-top:20px"><div class="et"><b>Oggi</b><span>4 visite, e qualche messaggio sparso</span></div><div class="giorni" data-giorni="oggi"></div></div>
+    <div class="striscia"><div class="et"><b>Con Hexawell</b><span>ogni giorno un segnale, anche il silenzio</span></div><div class="giorni" data-giorni="hexa"></div></div>
+    <div class="etichette" style="margin-top:6px"><span>Pasti registrati</span><span>Chat con l'assistente</span><span class="calda">Silenzi contati</span><span class="calda">La settima settimana si vede quando c'è ancora tempo</span></div>
+    <p class="nota">Un quadratino per giorno, 12 settimane. Dimostrativo.</p>
+  </div>
+  <div class="piede">Riservato · 06 / 15</div>
+</section>
+
+<!-- 07 · il metodo, animata -->
+<section class="slide" id="metodo">
+  <div class="mt">
+    <p class="kicker">Il metodo</p>
+    <h1>Dall'esagono al traguardo.</h1>
+    <div class="mt-track"><div class="mt-st"><i>1</i><span>Esagono</span></div><div class="mt-st"><i>2</i><span>Visita</span></div><div class="mt-st"><i>3</i><span>Patto</span></div><div class="mt-st"><i>4</i><span>Piano</span></div><div class="mt-st"><i>5</i><span>Tracce ⇄ feedback</span><small>× 12 SETTIMANE</small></div><div class="mt-st"><i>6</i><span>Traguardo</span></div></div>
+    <div class="mt-palco">
+      <div class="mt-sc mt-esa"><svg viewBox="-300 -205 600 410"><polygon points="0.0,-145.0 125.6,-72.5 125.6,72.5 0.0,145.0 -125.6,72.5 -125.6,-72.5" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-95.7 82.9,-47.8 82.9,47.8 0.0,95.7 -82.9,47.8 -82.9,-47.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-47.9 41.4,-23.9 41.4,23.9 0.0,47.9 -41.4,23.9 -41.4,-23.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="-145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><polygon class="forma" points="0.0,-95.7 69.1,-39.9 75.3,43.5 0.0,89.9 -37.7,21.7 -62.8,-36.3" fill="rgba(29,83,71,.22)" stroke="var(--acc)" stroke-width="4" stroke-linejoin="round"/><text x="0" y="-169" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Cibo</text><text x="152" y="-81" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Movimento</text><text x="152" y="93" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Corpo</text><text x="0" y="181" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Salute</text><text x="-152" y="93" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--segnale)">Testa</text><text x="-152" y="-82" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--muto)">Persone intorno</text><g class="corto"><circle class="p" cx="-37.7" cy="21.7" r="8" fill="none" stroke="var(--segnale)" stroke-width="3"/><circle cx="-37.7" cy="21.7" r="8" fill="var(--segnale)"/></g></svg><div class="mt-nota-esa">Il lato più corto<small>è da qui che si costruisce la disciplina, per prima.</small></div></div>
+      <div class="mt-sc"><div class="foglio app"><em>Appunti della visita</em><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="freccia">→</div>
+        <div class="foglio rep cl d1"><em>Per lo studio</em><b>Report clinico</b><i></i><i></i><i style="width:70%"></i><i></i><i style="width:60%"></i></div>
+        <div class="foglio rep pz d2"><em>Per lei</em><b>Il tuo percorso</b><i></i><i style="width:80%"></i><i></i><i style="width:65%"></i><i></i></div></div>
+      <div class="mt-sc"><div class="mt-patto"><div class="r" style="transition-delay:0.30s"><b>Girovita</b><span class="og">96 cm</span><span class="fr">→</span><span class="tg">≤ 85 cm</span></div><div class="r" style="transition-delay:0.75s"><b>Massa grassa</b><span class="og">38,2 %</span><span class="fr">→</span><span class="tg">≤ 32 %</span></div><div class="r" style="transition-delay:1.20s"><b>Massa magra</b><span class="og">44,0 kg</span><span class="fr">→</span><span class="tg">≥ 42 kg</span></div><div class="r" style="transition-delay:1.65s"><b>Grasso viscerale</b><span class="og">12</span><span class="fr">→</span><span class="tg">≤ 8</span></div><div class="r" style="transition-delay:2.10s"><b>Idratazione</b><span class="og">44,5 %</span><span class="fr">→</span><span class="tg">≥ 48 %</span></div></div><div class="mt-data"><div>Traguardo<br>giorno 84</div><span>Obiettivo: 75%</span><div class="firme"><p>lo studio</p><p>la paziente</p></div></div></div>
+      <div class="mt-sc"><div class="foglio" style="height:280px"><em>Il nutrizionista</em><b>Piano alimentare</b><i></i><i></i><i style="width:70%"></i><i></i><i style="width:55%"></i></div>
+        <div class="link"><span class="freccia">→</span>un link</div>
+        <div class="tel-p"><b>Il tuo piano</b><span>Colazione</span><span>Pranzo</span><span>Spuntino</span><span>Cena</span></div></div>
+      <div class="mt-sc"><div class="mt-ciclo">
+        <div class="flusso in"><p>Legge</p><span style="transition-delay:0.4s">Pasti registrati</span><span style="transition-delay:1.1s">Chat con l'assistente</span><span style="transition-delay:1.8s">Interviste mirate</span><span style="transition-delay:2.5s">Silenzi</span></div>
+        <svg viewBox="0 0 400 370">
+  <circle cx="200" cy="205" r="128" fill="none" stroke="var(--acc-velo)" stroke-width="14"/>
+  <g class="giro"><circle cx="200" cy="77" r="11" fill="var(--segnale)"/></g>
+  <g text-anchor="middle" style="font:700 24px var(--titoli)">
+    <circle cx="200" cy="77" r="60" fill="var(--acc)"/><text x="200" y="85" fill="#fff">Parla</text>
+    <circle cx="311" cy="269" r="60" fill="var(--acc)"/><text x="311" y="277" fill="#fff">Legge</text>
+    <circle cx="89" cy="269" r="60" fill="var(--segnale)"/><text x="89" y="277" fill="#fff">Agisce</text>
+  </g>
+  <text x="200" y="212" text-anchor="middle" style="font:500 14px var(--mono);letter-spacing:.12em;fill:var(--tenue)">L'ASSISTENTE</text>
+</svg>
+        <div class="flusso out"><p>Agisce</p><span style="transition-delay:3.2s">Scrive alla paziente</span><span style="transition-delay:4.0s">La riporta sul programma</span><span style="transition-delay:4.8s">Propone il correttivo al nutrizionista</span></div>
+        <div class="muscoli"><svg viewBox="-150 -140 300 280"><polygon points="0.0,-100.0 86.6,-50.0 86.6,50.0 0.0,100.0 -86.6,50.0 -86.6,-50.0" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-66.0 57.2,-33.0 57.2,33.0 0.0,66.0 -57.2,33.0 -57.2,-33.0" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-33.0 28.6,-16.5 28.6,16.5 0.0,33.0 -28.6,16.5 -28.6,-16.5" fill="none" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="-100.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="86.6" y2="-50.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="86.6" y2="50.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="100.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-86.6" y2="50.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-86.6" y2="-50.0" stroke="var(--linea)" stroke-width="1.5"/><polygon class="vivo" points="0.0,-66.0 47.6,-27.5 52.0,30.0 0.0,62.0 -26.0,15.0 -43.3,-25.0" fill="rgba(29,83,71,.22)" stroke="var(--acc)" stroke-width="4" stroke-linejoin="round"/></svg><div class="sett"><span class="n-sett">Settimana 1</span><small>i muscoli crescono</small></div></div>
+      </div></div>
+      <div class="mt-sc"><div class="mt-arrivo"><div class="riga"><span>Massa magra</span><div class="tr"><b></b><i data-w="100"></i></div><span class="val">100%</span></div><div class="riga"><span>Grasso viscerale</span><div class="tr"><b></b><i data-w="75"></i></div><span class="val">75%</span></div><div class="riga"><span>Idratazione</span><div class="tr"><b></b><i data-w="74"></i></div><span class="val">74%</span></div><div class="riga"><span>Massa grassa</span><div class="tr"><b></b><i data-w="66"></i></div><span class="val">66%</span></div><div class="riga"><span>Girovita</span><div class="tr"><b></b><i data-w="64"></i></div><span class="val">64%</span></div></div><div class="mt-media"><span class="n-media">0%</span><small>media · obiettivo 75%</small></div></div>
+    </div>
+    <div class="mt-cap"><div><p class="q"></p><h2></h2></div><p class="fr"></p></div>
+    <div class="mt-stampa"><div><b>1 · Prima della visita</b><h3>L'esagono, l'ossatura</h3><p>Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché.</p></div><div><b>2 · Giorno 1</b><h3>La visita</h3><p>Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei.</p></div><div><b>3 · Giorno 1</b><h3>Il patto</h3><p>Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori.</p></div><div><b>4 · Giorno 1</b><h3>Il piano</h3><p>Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare.</p></div><div><b>5 · Settimane 1-12</b><h3>Tracce e feedback: i muscoli</h3><p>L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana.</p></div><div><b>6 · Settimana 12</b><h3>Il traguardo</h3><p>Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%.</p></div></div>
+    <p class="mt-nota">Percorso dimostrativo di Laura B. L'assistente che agisce da solo e le interviste mirate si completano con la raccolta, insieme ai primi studi fondatori.</p>
+  </div>
+  <div class="piede">Riservato · 07 / 15</div>
+</section>
+
+<!-- 12 · oggi e con la raccolta -->
+<section class="slide marca">
+  <div class="corpo largo">
+    <p class="kicker">Cosa c'è e cosa si finanzia</p>
+    <h1>Oggi in produzione, <span class="ink">domani con la raccolta.</span></h1>
+    <div class="oggi-poi stg">
+      <div class="colonna oggi"><h3>Quello che c'è già</h3><p class="sub">Oggi, in produzione</p>
+        <ul><li>Esagono da questionario e intervista</li><li>Due report scritti dagli appunti della visita</li><li>Il patto, con il traguardo scritto dal nutrizionista</li><li>Diario dei pasti sul telefono, con un link</li><li>Assistente su Telegram: promemoria e risposte</li><li>Cruscotto a colori: in linea, attenzione, a rischio</li></ul></div>
+      <div class="colonna poi"><h3>Quello che si costruisce</h3><p class="sub">Con la raccolta, insieme ai primi studi</p>
+        <ul><li>Il traguardo su misura calcolato dal metodo, con la regola del 75%</li><li>L'assistente che agisce colore per colore e propone il correttivo al nutrizionista</li><li>Interviste mirate ogni settimana, e a fine ciclo anche a voce</li><li>Si scelgono 5-6 funzioni con i primi studi, e si tengono le 3 che funzionano sul serio</li></ul></div>
+    </div>
+    <p class="nota">Laura Bianchi è la paziente dimostrativa: schermate e documenti sono del sistema vero, sul suo percorso.</p>
+  </div>
+  <div class="piede">Riservato · 08 / 15</div>
+</section>
+
+<!-- 08 · cosa cambia per lo studio -->
+<section class="slide marca">
+  <div class="corpo largo">
+    <p class="kicker">Cosa cambia per lo studio</p>
+    <h1>Lo studio che ne esce.</h1>
+    <div class="cambia3 stg">
+      <div><svg viewBox="0 0 120 90"><rect x="6" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="6" y="56" width="4" height="22" fill="var(--acc)"/><rect x="22" y="56" width="4" height="22" fill="var(--acc)"/><rect x="34" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="34" y="56" width="4" height="22" fill="var(--acc)"/><rect x="50" y="56" width="4" height="22" fill="var(--acc)"/><rect x="62" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="62" y="56" width="4" height="22" fill="var(--acc)"/><rect x="78" y="56" width="4" height="22" fill="var(--acc)"/><rect x="90" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="90" y="56" width="4" height="22" fill="var(--acc)"/><rect x="106" y="56" width="4" height="22" fill="var(--acc)"/></svg><p class="n">1 · Le pazienti</p><h3>Meno pazienti, più fedeli</h3><p>Restano fino al traguardo, e tornano. Meno prime visite da rifare da capo ogni mese.</p></div>
+      <div class="verde"><svg viewBox="0 0 120 90"><rect x="4" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="4" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="50" width="15" height="24" rx="3" fill="var(--segnale)"/><rect x="2" y="2" width="116" height="10" rx="3" fill="#fff" opacity=".9"/></svg><p class="n">2 · Cosa si vende</p><h3>Il programma, al posto della visita</h3><p>Dodici settimane pagate all'inizio: incasso certo e valore percepito più alto (+30%, nostra stima).</p></div>
+      <div><svg viewBox="0 0 120 90"><circle cx="60" cy="45" r="40" fill="none" stroke="var(--acc)" stroke-width="6"/><circle cx="60" cy="45" r="25" fill="none" stroke="var(--acc)" stroke-width="6"/><circle cx="60" cy="45" r="9" fill="var(--segnale)"/></svg><p class="n">3 · Il posizionamento</p><h3>Obiettivi decisi con la paziente</h3><p>Il nutrizionista lavora su traguardi concordati, con una data. Lo studio si fa riconoscere per i risultati.</p></div>
+    </div>
+  </div>
+  <div class="piede">Riservato · 09 / 15</div>
+</section>
+
+<!-- 10 · modello di business -->
+<section class="slide scura">
+  <div class="corpo largo">
+    <p class="kicker">Il modello di business</p>
+    <h1>Lo studio paga un canone <span class="ink">e un programma a paziente.</span></h1>
+    <div class="numeri stg">
+      <div class="numero"><div class="v"><span class="conta" data-a="39">39</span> €</div><div class="k">al mese, il canone di studio</div></div>
+      <div class="numero"><div class="v"><span class="conta" data-a="12">12</span> €</div><div class="k">al mese per ogni paziente nel programma</div></div>
+      <div class="numero calda"><div class="v">−<span class="conta" data-a="30">30</span>%</div><div class="k">listino fondatori, per 24 mesi</div></div>
+    </div>
+    <p class="nota" style="font-size:22px;margin-top:44px">Esempio: uno studio con 30 pazienti attive = 39 € + 30 × 12 € = <b style="color:var(--ink)">399 € al mese</b>.</p>
+  </div>
+  <div class="piede">Riservato · 10 / 15</div>
+</section>
+
+<!-- 11 · chi cerchiamo -->
+<section class="slide">
+  <div class="foto" style="background-image:url(img/v2-innovatore.jpg)"></div>
+  <div class="corpo" style="padding:70px 100px 80px 90px">
+    <p class="kicker">Chi cerchiamo</p>
+    <h1 style="font-size:58px">Il nutrizionista stanco di vendere la visita singola.</h1>
+    <ul class="tratti stg">
+      <li><span><b>Un innovatore</b>: si è già scelto un verticale, come la menopausa o lo sport, e produce contenuti seri.</span></li>
+      <li><span><b>Vuole riposizionarsi</b>: vendere un programma, con un risultato raggiungibile scritto in un patto.</span></li>
+      <li><span><b>Cerca un framework motivazionale</b> che va oltre la singola consulenza nutrizionale.</span></li>
+    </ul>
+    <div class="barra" style="font-size:24px">È il nostro investitore e il nostro primo cliente: chi mette la firma adotta il metodo.</div>
+    <p class="nota">Il bacino: circa 23-26 mila nutrizionisti in Italia (stima su dati ONB 2025).</p>
+  </div>
+  <div class="piede">Riservato · 11 / 15</div>
+</section>
+
+<!-- 12 · chi c'è -->
+<section class="slide marca">
+  <div class="corpo largo" style="padding:56px 100px 76px">
+    <p class="kicker">Il team</p>
+    <h1 style="font-size:60px;margin-bottom:26px">Chi c'è, e chi ha costruito il metodo.</h1>
+    <p class="sez-t">La squadra</p>
+    <div class="squadra stg">
+      <div class="pers io"><div class="ini">SD</div><div><p class="ru">Founder · prodotto e sviluppo</p><h3>Saverio D'Appio</h3><p>Trent'anni d'impresa. Ogni strumento lo prova prima su di sé.</p></div></div>
+      <div class="pers"><div class="ini">DB</div><div><p class="ru">Sales manager · socio al 10%</p><h3>Danilo Brunetti</h3><p>Porta Hexawell negli studi: la vendita e il rapporto con i nutrizionisti.</p></div></div>
+      <div class="pers"><div class="ini">SC</div><div><p class="ru">Brand ambassador</p><h3>Simona Costantini</h3><p>La voce di Hexawell verso le pazienti e verso i professionisti.</p></div></div>
+    </div>
+    <p class="sez-t">Hanno costruito il metodo e l'app con noi</p>
+    <div class="contributi stg">
+      <div class="mini"><div class="ini">MV</div><p class="ru">Counselor e psicologa</p><h3>Monica Ventre</h3><p>Il framework della disciplina: come si legge una paziente che cambia.</p></div>
+      <div class="mini"><div class="ini">ET</div><p class="ru">Mental coach</p><h3>Eva Toscano</h3><p>Il framework della disciplina e il questionario d'ingresso.</p></div>
+      <div class="mini"><div class="ini">FT</div><p class="ru">Personal trainer</p><h3>Fabrizio Transerici</h3><p>I piani di allenamento e il movimento nell'esagono.</p></div>
+      <div class="mini"><div class="ini">ES</div><p class="ru">Biologa nutrizionista</p><h3>Eleonora Spina</h3><p>I piani e il cruscotto: come lo studio si innesta sulla disciplina.</p></div>
+      <div class="mini"><div class="ini">EC</div><p class="ru">Nutrizionista</p><h3>Emanuela Casaldi</h3><p>Piani e cruscotto messi alla prova sulle pazienti della beta.</p></div>
+    </div>
+  </div>
+  <div class="piede">Riservato · 12 / 15</div>
+</section>
+
+<!-- 13 · dove siamo, dove andiamo -->
+<section class="slide marca">
+  <div class="corpo largo">
+    <p class="kicker">Stato e roadmap</p>
+    <h1>Dove siamo, dove andiamo.</h1>
+    <div class="tempo stg">
+      <div class="tappa"><p class="quando">Oggi</p><h3>In produzione</h3><p>Esagono, report, diario, assistente e cruscotto, su pazienti vere.</p></div>
+      <div class="tappa dopo"><p class="quando">Q4 2026</p><h3>Campagna fondatori</h3><p>72.500 € e i primi studi fondatori. <span class="tbd">quanti</span></p></div>
+      <div class="tappa dopo"><p class="quando">Dopo la raccolta</p><h3>Con i primi studi</h3><p>Traguardo calcolato, assistente che agisce, interviste: si costruiscono con loro.</p></div>
+      <div class="tappa dopo"><p class="quando">Poi</p><h3>Altre professioni</h3><p>Personal trainer e mental coach sullo stesso percorso. <span class="tbd">da decidere</span></p></div>
+    </div>
+  </div>
+  <div class="piede">Riservato · 13 / 15</div>
+</section>
+
+<!-- 14 · l'operazione -->
+<section class="slide scura">
+  <div class="corpo largo">
+    <p class="kicker">L'operazione</p>
+    <div class="grande" style="font-size:200px"><span class="conta" data-a="72500">72.500</span> €</div>
+    <div class="termini stg">
+      <div class="termine"><p class="k">Società</p><div class="v">SRL a Roma, startup innovativa</div></div>
+      <div class="termine"><p class="k">Strumento</p><div class="v">equity, SFP o SAFE <span class="tbd">da decidere</span></div></div>
+      <div class="termine"><p class="k">Quota · valutazione · ticket</p><div class="v"><span class="tbd">da Consolato / Simatica</span></div></div>
+      <div class="termine"><p class="k">Vantaggio fiscale</p><div class="v">detrazione startup innovativa <span class="tbd">aliquota</span></div></div>
+      <div class="termine"><p class="k">Grant Lazio</p><div class="v">possibile leva, non conteggiata</div></div>
+      <div class="termine"><p class="k">Chiusura</p><div class="v"><span class="tbd">data</span></div></div>
+    </div>
+    <p class="nota" style="font-size:19px;margin-top:30px">A cosa servono: portare il metodo nei primi studi fondatori, costruire con loro le funzioni nuove, acquisire i primi clienti paganti. <span class="tbd">ripartizione</span></p>
+  </div>
+  <div class="piede">Riservato · 14 / 15</div>
+</section>
+
+<!-- 15 · perché adesso -->
+<section class="slide chiusura">
+  <div class="corpo largo">
+    <p class="kicker">Perché adesso</p>
+    <p class="cerchio">Un traguardo ambizioso ha una data.<br>La strada per arrivarci si costruisce con un patto.</p>
+    <p class="missione">Hexawell dà ai nutrizionisti lo strumento per vendere traguardi ambiziosi, e alle loro pazienti la disciplina e il metodo scientifico per raggiungerli.</p>
+    <div class="firma"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Founder<br>saverio.dappio@gmail.com</span></div>
+  </div>
+  <div class="piede">Riservato · 15 / 15</div>
+</section>
+
+<script>
+// 84 giorni: oggi solo le visite; con Hexawell tutti accesi, la 7ª settimana cede
+document.querySelectorAll('[data-giorni]').forEach(g => {
+  let h = '';
+  for (let d = 1; d <= 84; d++) {
+    if (g.dataset.giorni === 'oggi') h += [1, 28, 56, 84].includes(d) ? '<i class="visita"></i>' : [3, 9, 17, 31, 38, 60, 71].includes(d) ? '<i class="poco"></i>' : '<i></i>';
+    else h += (d >= 44 && d <= 46) ? '<i class="cede"></i>' : (d >= 47 && d <= 48) ? '<i></i>' : '<i class="on"></i>';
+  }
+  g.innerHTML = h;
+});
+
+// ---- slide animata «Il metodo»: 6 fasi, circa 1:50
+const FASI = [["Prima della visita", "L'esagono, l'ossatura", "Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché."], ["Giorno 1", "La visita", "Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei."], ["Giorno 1", "Il patto", "Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori."], ["Giorno 1", "Il piano", "Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare."], ["Settimane 1-12", "Tracce e feedback", "L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana."], ["Settimana 12", "Il traguardo", "Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%."]];
+const DURATE = [14, 14, 16, 10, 38, 16];
+const BASE = [0.66, 0.55, 0.6, 0.62, 0.3, 0.5], FINE = [0.9, 0.82, 0.86, 0.85, 0.7, 0.78];
+const M = document.getElementById('metodo');
+let timer = [];
+const dopo = (sec, fn) => timer.push(setTimeout(fn, sec * 1000));
+function puntiEsa(v, R) { return v.map((q, k) => { const a = (-90 + 60 * k) * Math.PI / 180; return (R * q * Math.cos(a)).toFixed(1) + ',' + (R * q * Math.sin(a)).toFixed(1); }).join(' '); }
+function muscoli(w) {  // settimana 1-12; la 7 è la ricaduta
+  let t = (w - 1) / 11; if (w === 7) t -= .22; if (w === 8) t -= .08;
+  const v = BASE.map((b, k) => b + (FINE[k] - b) * Math.max(0, t));
+  M.querySelector('.muscoli polygon.vivo').setAttribute('points', puntiEsa(v, 100));
+  M.querySelector('.n-sett').textContent = 'Settimana ' + w;
+}
+function fase(i) {
+  M.querySelectorAll('.mt-st').forEach((st, k) => st.className = 'mt-st' + (k < i ? ' fatta' : k === i ? ' ora' : ''));
+  M.querySelectorAll('.mt-sc').forEach((sc, k) => sc.classList.toggle('ora', k === i));
+  const c = M.querySelector('.mt-cap'); c.classList.add('cambia');
+  setTimeout(() => { const [q, h, p] = FASI[i]; c.querySelector('.q').textContent = q; c.querySelector('h2').textContent = h;
+    c.querySelector('.fr').textContent = p; c.classList.remove('cambia'); }, 450);
+}
+function fermaMetodo() { timer.forEach(clearTimeout); timer = []; }
+let faseOra = 0, inizio = [];
+{ let t = 0; inizio = DURATE.map(d => (t += d) - d); }
+function riempiArrivo() {
+  M.querySelectorAll('.mt-arrivo .tr i').forEach((i, k) => setTimeout(() => i.style.width = i.dataset.w + '%', k * 250));
+  const n = M.querySelector('.n-media'); for (let k = 0; k <= 76; k++) dopo(.6 + k * 2.6 / 76, () => n.textContent = k + '%');
+}
+// parte dalla fase «da» e prosegue da sola con il suo ritmo
+function avviaMetodo(da = 0) {
+  fermaMetodo(); faseOra = da;
+  M.querySelectorAll('.mt-arrivo .tr i').forEach(i => i.style.width = '0');
+  M.querySelector('.n-media').textContent = '0%';
+  muscoli(da > 4 ? 12 : 1);
+  fase(da);
+  for (let k = da + 1; k < 6; k++) dopo(inizio[k] - inizio[da], () => { faseOra = k; fase(k); });
+  if (da <= 4) for (let w = 2; w <= 12; w++) dopo(inizio[4] - inizio[da] + (da === 4 ? 2 : 5) + (w - 2) * 2.9, () => muscoli(w));
+  if (da === 5) dopo(.4, riempiArrivo); else dopo(inizio[5] - inizio[da] + .4, riempiArrivo);
+}
+function statoFinale() { fermaMetodo(); M.querySelectorAll('.mt-st').forEach(st => st.className = 'mt-st fatta'); }
+muscoli(1);
+// a scorrimento: parte quando la slide entra in vista, si ferma quando esce
+new IntersectionObserver(e => { if (document.body.classList.contains('presenta')) return;
+  if (e[0].isIntersecting) avviaMetodo(0); else fermaMetodo(); }, { threshold: .5 }).observe(M);
+
+// ---- modalità presentazione: una slide alla volta, a schermo intero
+const SLIDE = [...document.querySelectorAll('.slide')];
+let cur = 0;
+const scala = () => document.documentElement.style.setProperty('--s', Math.min(innerWidth / 1600, innerHeight / 900));
+function mostra(i, faseIniziale = 0) { cur = Math.max(0, Math.min(SLIDE.length - 1, i));
+  SLIDE.forEach((sl, k) => sl.classList.toggle('attiva', k === cur)); entra(SLIDE[cur]);
+  if (SLIDE[cur] === M) avviaMetodo(faseIniziale); else fermaMetodo(); }
+function presenta() { document.body.classList.add('presenta'); scala(); mostra(slideInVista()); document.documentElement.requestFullscreen?.().catch(() => {}); }
+function esci() { document.body.classList.remove('presenta'); fermaMetodo(); }
+document.querySelector('.presenta-btn').addEventListener('click', presenta);
+addEventListener('resize', scala);
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement) esci(); });
+function slideInVista() { let best = 0, area = -1;
+  SLIDE.forEach((sl, k) => { const r = sl.getBoundingClientRect(); const v = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0); if (v > area) { area = v; best = k; } });
+  return best; }
+// avanti: dentro il metodo si va di fase in fase, dopo la sesta si passa alla slide successiva
+function avanti() {
+  const pres = document.body.classList.contains('presenta'); const i = pres ? cur : slideInVista();
+  if (SLIDE[i] === M && faseOra < 5) { avviaMetodo(faseOra + 1); return; }
+  if (pres) mostra(i + 1); else SLIDE[Math.min(i + 1, SLIDE.length - 1)].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function indietro() {
+  const pres = document.body.classList.contains('presenta'); const i = pres ? cur : slideInVista();
+  if (SLIDE[i] === M && faseOra > 0) { avviaMetodo(faseOra - 1); return; }
+  if (pres) mostra(i - 1, SLIDE[i - 1] === M ? 5 : 0); else SLIDE[Math.max(i - 1, 0)].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); avanti(); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); indietro(); }
+  else if (e.key === 'r') avviaMetodo(0);
+  else if (e.key === 'Escape') esci(); });
+// in presentazione anche la rotella del mouse va avanti e indietro, un passo alla volta
+let fermo = false;
+addEventListener('wheel', e => { if (!document.body.classList.contains('presenta') || fermo) return;
+  fermo = true; setTimeout(() => fermo = false, 700); e.deltaY > 0 ? avanti() : indietro(); }, { passive: true });
+
+
+// ---- entrata delle slide e numeri che contano
+document.body.classList.add('anima');
+function conta(el) { const a = +el.dataset.a, t0 = performance.now();
+  const passo = now => { const p = Math.min(1, (now - t0) / 1400), v = Math.round(a * (1 - Math.pow(1 - p, 3)));
+    el.textContent = v.toLocaleString('it-IT'); if (p < 1) requestAnimationFrame(passo); };
+  requestAnimationFrame(passo); }
+function entra(sl) { sl.classList.remove('entra'); void sl.offsetWidth; sl.classList.add('entra');
+  sl.querySelectorAll('.conta').forEach(el => setTimeout(() => conta(el), 500)); }
+const vista = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !document.body.classList.contains('presenta') && !e.target.classList.contains('entra')) entra(e.target); }), { threshold: .35 });
+SLIDE.forEach(sl => vista.observe(sl));
+
+// a schermo le slide si adattano alla larghezza della finestra
+const adatta = () => document.documentElement.style.setProperty('--z', Math.min(1, (innerWidth - 40) / 1600));
+adatta(); addEventListener('resize', adatta);
+</script>
+</body>
+</html>
