@@ -578,7 +578,7 @@ html,body{overflow-x:hidden;max-width:100%}
 </style>
 </head>
 <body>
-<button class="presenta-btn" title="Schermo intero · va da solo in poco più di due minuti · frecce per scorrere · Esc per uscire">▶ Presenta</button>
+<button class="presenta-btn" title="Schermo intero · si avanza col tasto (frecce, spazio, clic) · Esc per uscire">▶ Presenta</button>
 <div class="avanz"><i></i></div>
 <div class="nav-m"><button data-v="-1" aria-label="Indietro">‹</button><button data-v="1" aria-label="Avanti">›</button><button class="x" data-v="x" aria-label="Esci">✕</button></div>
 <div class="ruota">Gira il telefono in orizzontale: le slide si vedono meglio.</div>
@@ -706,20 +706,20 @@ html,body{overflow-x:hidden;max-width:100%}
 <section class="slide scura">
   <div class="corpo largo" style="padding:56px 100px 76px">
     <p class="kicker">I numeri</p>
-    <h1 style="font-size:58px;margin-bottom:28px">Margine sopra il 75%, <span class="ink">e un round solo per arrivare al pareggio.</span></h1>
+    <h1 style="font-size:58px;margin-bottom:28px">Margine sopra il 75%, <span class="ink">e le assunzioni seguono gli incassi.</span></h1>
     <div class="scenari stg">
       <div class="scen"><p class="nm">Prudente</p>
         <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
-          <tr><td>Studi attivi</td><td>22</td><td>41</td><td>70</td></tr>
-          <tr><td>Ricavi</td><td>18 k€</td><td>55 k€</td><td>106 k€</td></tr></table>
-        <p class="fondo">Pareggio al <b>mese 36</b></p></div>
+          <tr><td>Studi attivi</td><td>22</td><td>41</td><td>55</td></tr>
+          <tr><td>Ricavi</td><td>18 k€</td><td>55 k€</td><td>89 k€</td></tr></table>
+        <p class="fondo">Ponte di <b>20.000 €</b> al mese 22</p></div>
       <div class="scen base"><p class="nm">Base</p>
         <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
-          <tr><td>Studi attivi</td><td>39</td><td>77</td><td>133</td></tr>
-          <tr><td>Ricavi</td><td>43 k€</td><td>133 k€</td><td>265 k€</td></tr></table>
-        <p class="fondo">Pareggio al <b>mese 10</b></p></div>
+          <tr><td>Studi attivi</td><td>39</td><td>101</td><td>179</td></tr>
+          <tr><td>Ricavi</td><td>43 k€</td><td>152 k€</td><td>348 k€</td></tr></table>
+        <p class="fondo">Pareggio al <b>mese 20</b></p></div>
     </div>
-    <p class="frase" style="font-size:21px;margin-top:26px">I 72.500 €: sviluppo 34% · acquisizione 30% · affiancamento dei primi studi 17% · legale e privacy 10% · infrastruttura 8%. Ipotesi e dettaglio nella presentazione completa.</p>
+    <p class="frase" style="font-size:21px;margin-top:26px">I 72.500 €: sviluppo 30% · vendita 21% · acquisizione 21% · affiancamento dei primi studi 13% · legale e privacy 8% · infrastruttura 7%. Ipotesi e dettaglio nella presentazione completa.</p>
   </div>
   <div class="piede">Elevator pitch · 08 / 09</div>
 </section>
@@ -735,7 +735,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="piede">Elevator pitch · 09 / 09</div>
 </section>
 <script>
-// elevator pitch: va da solo (poco più di tre minuti); frecce, rotella e clic per andare avanti e indietro
+// elevator pitch: si avanza solo col tasto; frecce, rotella e clic per andare avanti e indietro
 const SLIDE = [...document.querySelectorAll('.slide')];
 const DURATE = [9, 20, 26, 26, 26, 22, 18, 22, 16];
 let cur = 0, auto = null;
@@ -758,9 +758,7 @@ function mostra(i) {
   cur = i;
   SLIDE.forEach((sl, k) => sl.classList.toggle('attiva', k === cur)); entra(SLIDE[cur]);
   clearTimeout(auto);
-  barra.style.transition = 'none'; barra.style.width = (cur / SLIDE.length * 100) + '%'; void barra.offsetWidth;
-  barra.style.transition = 'width ' + DURATE[cur] + 's linear'; barra.style.width = ((cur + 1) / SLIDE.length * 100) + '%';
-  if (cur < SLIDE.length - 1) auto = setTimeout(() => mostra(cur + 1), DURATE[cur] * 1000);
+  barra.style.transition = 'width .4s ease'; barra.style.width = ((cur + 1) / SLIDE.length * 100) + '%';  // si avanza solo col tasto
 }
 function presenta() { document.body.classList.add('presenta'); scala(); mostra(0); document.documentElement.requestFullscreen?.().catch(() => {}); }
 function esci() { document.body.classList.remove('presenta'); clearTimeout(auto); }
