@@ -565,6 +565,16 @@ body.presenta .nav-m{display:flex}
 
 /* telefono: la pagina resta larga quanto lo schermo, niente impaginazione da computer */
 html,body{overflow-x:hidden;max-width:100%}
+.scenari{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.scen{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:24px 30px}
+.scen.base{border:2px solid #E9C9A0}
+.scen .nm{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#E9C9A0;margin:0 0 12px}
+.scen table{width:100%;border-collapse:collapse}
+.scen th{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:right;padding:0 0 10px}
+.scen td{padding:11px 0;border-top:1px solid rgba(255,255,255,.18);text-align:right;font:600 26px/1 var(--titoli);color:#fff}
+.scen td:first-child{text-align:left;font:400 19px/1.3 var(--testo);color:rgba(255,255,255,.75)}
+.scen .fondo{margin:14px 0 0;font-size:19px;color:rgba(255,255,255,.75)}.scen .fondo b{color:#fff}
+.slide.scura .frase{color:rgba(255,255,255,.85)}
 </style>
 </head>
 <body>
@@ -588,10 +598,10 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="corpo">
     <div class="marchio"><svg><use href="#logo"/></svg><div class="parola">Hexa<em>well</em></div></div>
     <p class="payoff">Per i nutrizionisti che vendono traguardi</p>
-    <p class="frase">Un metodo e un assistente personale che portano la paziente del nutrizionista <b>al traguardo, in dodici settimane</b>.</p>
+    <p class="frase">Un metodo e un assistente personale che portano la paziente del nutrizionista <b>al traguardo, in 12 settimane</b>.</p>
     <p class="nota" style="font-size:18px;margin-top:30px">Elevator pitch per gli investitori · Saverio D'Appio · ottobre 2026</p>
   </div>
-  <div class="piede">Elevator pitch · 01 / 07</div>
+  <div class="piede">Elevator pitch · 01 / 09</div>
 </section>
 
 <section class="slide">
@@ -602,10 +612,10 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="frase" style="margin-bottom:30px">Fra una visita e l'altra la paziente resta sola con la fatica, e molla prima del traguardo.</p>
     <ul class="tratti stg">
       <li><span><b>Una prima visita dopo l'altra</b>: anamnesi, piano e fiducia da rifare da capo, ogni mese.</span></li>
-      <li><span><b>Pagato a visita</b>: senza un percorso che arrivi in fondo, l'incasso dura quanto la paziente.</span></li>
+      <li><span><b>Lo studio è pagato a visita</b>: senza un percorso che arrivi in fondo, l'incasso dura quanto la paziente.</span></li>
     </ul>
   </div>
-  <div class="piede">Elevator pitch · 02 / 07</div>
+  <div class="piede">Elevator pitch · 02 / 09</div>
 </section>
 
 <section class="slide marca">
@@ -614,14 +624,14 @@ html,body{overflow-x:hidden;max-width:100%}
     <h1 style="font-size:56px;margin-bottom:34px">Tre soluzioni per lo studio. <span class="ink">Una sola porta la paziente al traguardo.</span></h1>
     <div class="tier3">
       <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-porta.jpg)"></div><div><div class="nm">Marketplace</div><div class="tg">MioDottore e simili · riempiono l'agenda</div></div></div>
-        <ul><li>Porta pazienti nuove</li><li class="no">Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
-      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-fotocopie.jpg)"></div><div><div class="nm">Gestionale</div><div class="tg">Software per lo studio · fanno risparmiare tempo</div></div></div>
-        <ul><li class="no">Porta pazienti nuove</li><li>Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
+        <ul><li>Porta pazienti nuove</li><li class="no">Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Si perde ancora</small>chi molla a metà percorso</div></div>
+      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-fotocopie.jpg)"></div><div><div class="nm">Gestionale</div><div class="tg">Software per lo studio · fa risparmiare tempo</div></div></div>
+        <ul><li class="no">Porta pazienti nuove</li><li>Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Si perde ancora</small>chi molla a metà percorso</div></div>
       <div class="tier noi"><span class="nastro">Il metodo</span><div class="testa"><svg><use href="#logo"/></svg><div><div class="nm">Hexa<em>well</em></div><div class="tg">Per chi vende traguardi</div></div></div>
         <ul><li class="no" style="animation-delay:1.60s">Porta pazienti nuove</li><li style="animation-delay:1.78s">Piano e diario sul telefono</li><li style="animation-delay:1.96s">Esagono: come lei tende a mollare</li><li style="animation-delay:2.14s">Patto con traguardo e data</li><li style="animation-delay:2.32s">Un assistente che la segue ogni giorno</li><li style="animation-delay:2.50s">Lo studio vende un programma</li></ul><div class="esito"><small>La paziente</small>arriva al traguardo</div></div>
     </div>
   </div>
-  <div class="piede">Elevator pitch · 03 / 07</div>
+  <div class="piede">Elevator pitch · 03 / 09</div>
 </section>
 
 <section class="slide marca">
@@ -635,9 +645,9 @@ html,body{overflow-x:hidden;max-width:100%}
       <div class="p"><b>Settimana 12</b><h3>Traguardo</h3><p>Il patto si rilegge misura per misura.</p></div>
     </div>
     <div class="barra" style="font-size:24px">Il nutrizionista non è più solo: ha un assistente personale che segue ogni paziente.</div>
-    <p class="nota">Oggi in produzione: esagono, report, diario, assistente, cruscotto. Con la raccolta: l'assistente che agisce da solo e le interviste.</p>
+    <p class="nota">Oggi in produzione: esagono, report, diario, assistente, cruscotto. Con la raccolta: il traguardo calcolato, l'assistente che agisce da solo e le interviste.</p>
   </div>
-  <div class="piede">Elevator pitch · 04 / 07</div>
+  <div class="piede">Elevator pitch · 04 / 09</div>
 </section>
 
 <section class="slide scura">
@@ -646,18 +656,18 @@ html,body{overflow-x:hidden;max-width:100%}
     <h1 style="font-size:58px;margin-bottom:20px">Lo studio paga Hexawell, <span class="ink">la paziente paga il programma.</span></h1>
     <div class="flusso3">
       <div class="nodo noi"><h3>Hexawell</h3><small>il metodo e l'assistente</small></div>
-      <div class="arco"><span>39 € al mese + 12 € a paziente</span><small>l'abbonamento dello studio</small></div>
+      <div class="arco"><span>39 € al mese + 12 € al mese a paziente</span><small>il canone dello studio</small></div>
       <div class="nodo"><h3>Lo studio</h3><small>il nutrizionista</small></div>
-      <div class="arco"><span>Un programma di 12 settimane</span><small>al prezzo dello studio, pagato all'inizio</small></div>
+      <div class="arco"><span>Un programma di 12 settimane</span><small>al prezzo deciso dallo studio, pagato all'inizio</small></div>
       <div class="nodo"><h3>La paziente</h3><small>con un traguardo e una data</small></div>
     </div>
     <div class="canali stg">
       <div><b>Campagna fondatori</b><p>Chi investe diventa cliente: listino −30% per 24 mesi.</p></div>
-      <div><b>Vendita negli studi</b><p>Un sales manager dedicato, socio della società.</p></div>
-      <div><b>Video e demo</b><p>Il metodo si mostra prima di venderlo. Esempio: 30 pazienti = 399 € al mese.</p></div>
+      <div><b>Vendita negli studi</b><p>Un responsabile vendite dedicato, socio della società.</p></div>
+      <div><b>Video e demo</b><p>Il metodo si mostra prima di venderlo. Uno studio con 30 pazienti attive paga 399 € al mese.</p></div>
     </div>
   </div>
-  <div class="piede">Elevator pitch · 05 / 07</div>
+  <div class="piede">Elevator pitch · 05 / 09</div>
 </section>
 
 <section class="slide">
@@ -666,32 +676,68 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="kicker">A chi lo vendiamo</p>
     <h1 style="font-size:54px">Al nutrizionista stanco di vendere la visita singola.</h1>
     <ul class="tratti stg">
-      <li><span><b>Un innovatore</b>, che si è già scelto un verticale come la menopausa o lo sport.</span></li>
+      <li><span><b>Un innovatore</b>, che si è già scelto una specializzazione, come la menopausa o lo sport.</span></li>
       <li><span><b>Vuole riposizionarsi</b>: vendere un programma, con un risultato scritto in un patto.</span></li>
-      <li><span><b>Cerca un framework</b> che va oltre la singola consulenza nutrizionale.</span></li>
+      <li><span><b>Cerca un metodo</b> che vada oltre la singola consulenza nutrizionale.</span></li>
     </ul>
     <div class="mini-num stg">
       <div><b>23-26 mila</b>nutrizionisti in Italia (stima su dati ONB 2025)</div>
-      <div><b>7 mln</b>donne fra 45 e 59 anni: il primo verticale (ISTAT 2025)</div>
+      <div><b>7 milioni</b>di donne fra 45 e 59 anni: il primo mercato (ISTAT 2025)</div>
     </div>
   </div>
-  <div class="piede">Elevator pitch · 06 / 07</div>
+  <div class="piede">Elevator pitch · 06 / 09</div>
+</section>
+
+<section class="slide marca">
+  <div class="corpo largo" style="padding:56px 100px 76px">
+    <p class="kicker">Chi c'è</p>
+    <h1 style="font-size:58px;margin-bottom:26px">Una squadra piccola, <span class="ink">un metodo costruito da specialisti.</span></h1>
+    <div class="squadra stg">
+      <div class="pers io"><div class="ini">SD</div><div><p class="ru">Fondatore · prodotto e sviluppo</p><h3>Saverio D'Appio</h3><p>Trent'anni d'impresa, due locali di proprietà a Roma. Ha costruito il sistema e lo ha messo alla prova per 18 mesi con A Better Way.</p></div></div>
+      <div class="pers"><div class="ini">DB</div><div><p class="ru">Responsabile vendite · socio al 10%</p><h3>Danilo Brunetti</h3><p>Porta Hexawell negli studi: la vendita e il rapporto con i nutrizionisti.</p></div></div>
+      <div class="pers"><div class="ini">SC</div><div><p class="ru">Brand ambassador</p><h3>Simona Costantini</h3><p>La voce di Hexawell verso le pazienti e verso i professionisti.</p></div></div>
+    </div>
+    <p class="sez-t">Hanno costruito il metodo e il sistema con noi</p>
+    <p class="frase" style="font-size:22px;margin:0">Monica Ventre, counselor e psicologa · Eva Toscano, mental coach · Fabrizio Transerici, personal trainer · Eleonora Spina, biologa nutrizionista · Emanuela Casaldi, nutrizionista.</p>
+  </div>
+  <div class="piede">Elevator pitch · 07 / 09</div>
+</section>
+
+<section class="slide scura">
+  <div class="corpo largo" style="padding:56px 100px 76px">
+    <p class="kicker">I numeri</p>
+    <h1 style="font-size:58px;margin-bottom:28px">Margine sopra il 75%, <span class="ink">e un round solo per arrivare al pareggio.</span></h1>
+    <div class="scenari stg">
+      <div class="scen"><p class="nm">Prudente</p>
+        <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
+          <tr><td>Studi attivi</td><td>22</td><td>41</td><td>70</td></tr>
+          <tr><td>Ricavi</td><td>18 k€</td><td>55 k€</td><td>106 k€</td></tr></table>
+        <p class="fondo">Pareggio al <b>mese 36</b></p></div>
+      <div class="scen base"><p class="nm">Base</p>
+        <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
+          <tr><td>Studi attivi</td><td>39</td><td>77</td><td>133</td></tr>
+          <tr><td>Ricavi</td><td>43 k€</td><td>133 k€</td><td>265 k€</td></tr></table>
+        <p class="fondo">Pareggio al <b>mese 10</b></p></div>
+    </div>
+    <p class="frase" style="font-size:21px;margin-top:26px">I 72.500 €: sviluppo 34% · acquisizione 30% · affiancamento dei primi studi 17% · legale e privacy 10% · infrastruttura 8%. Ipotesi e dettaglio nella presentazione completa.</p>
+  </div>
+  <div class="piede">Elevator pitch · 08 / 09</div>
 </section>
 
 <section class="slide chiusura">
   <div class="corpo largo">
     <p class="kicker">L'operazione</p>
     <div class="grande"><span class="conta" data-a="72500">72.500</span> €</div>
-    <p class="frase">Startup innovativa, con la detrazione fiscale per chi investe. Servono a portare il metodo nei primi studi fondatori e a costruire con loro l'assistente che agisce da solo. <b>Chi investe diventa il nostro primo cliente.</b></p>
+    <p class="frase">Startup innovativa, con la detrazione fiscale per chi investe. I fondi servono a portare il metodo nei primi studi fondatori e a costruire con loro l'assistente che agisce da solo. <b>Chi investe diventa il nostro primo cliente.</b></p>
     <div><a class="link-deck" href="./">La presentazione completa →</a></div>
-    <div class="firma" style="margin-top:30px"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Founder<br>saverio.dappio@gmail.com</span></div>
+    <div class="firma" style="margin-top:30px"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Fondatore<br>saverio.dappio@gmail.com</span></div>
   </div>
-  <div class="piede">Elevator pitch · 07 / 07</div>
+  <div class="piede">Elevator pitch · 09 / 09</div>
 </section>
 <script>
-// elevator pitch: va da solo (circa 90 secondi); frecce, rotella e clic per andare avanti e indietro
+// elevator pitch: va da solo (poco più di tre minuti); frecce, rotella e clic per andare avanti e indietro
 const SLIDE = [...document.querySelectorAll('.slide')];
-const DURATE = [9, 20, 26, 26, 26, 22, 16];
+const DURATE = [9, 20, 26, 26, 26, 22, 18, 22, 16];
 let cur = 0, auto = null;
 
 // zoom lento sulle foto: un livello interno che si può animare senza invadere il testo

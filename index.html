@@ -99,6 +99,31 @@ h1 .ink{color:var(--ink)}
 .termine{border-top:1px solid var(--linea);padding-top:16px}
 .termine .k{font:500 14px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);margin:0 0 10px}
 .termine .v{font:600 30px/1.1 var(--titoli)}
+.termine .v.da-def{color:rgba(255,255,255,.55);font-weight:500}
+/* unit economics, scenari, uso dei fondi (07/10) */
+.ue{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.ue>div{border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:20px 26px}
+.ue .t{font:500 14px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#E9C9A0;margin:0 0 10px}
+.ue .r{font-size:20px;line-height:1.4;margin:0;color:rgba(255,255,255,.85)}.ue .r b{color:#fff}
+.scenari{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.scen{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:26px 30px}
+.scen.base{border:2px solid var(--acc)}
+.scen .nm{font:500 15px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--segnale);margin:0 0 14px}
+.scen table{width:100%;border-collapse:collapse;font-size:21px}
+.scen th{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);text-align:right;padding:0 0 10px}
+.scen td{padding:11px 0;border-top:1px solid var(--linea);text-align:right;font:600 24px/1 var(--titoli);color:var(--ink)}
+.scen td:first-child{text-align:left;font:400 18px/1.3 var(--testo);color:var(--muto)}
+.scen td.neg{color:var(--segnale)}
+.scen .fondo{margin:16px 0 0;font-size:18px;color:var(--muto)}.scen .fondo b{color:var(--acc)}
+.fondi{display:grid;grid-template-columns:1.6fr 1fr;gap:56px}
+.voci{display:flex;flex-direction:column;gap:20px}
+.voce{display:grid;grid-template-columns:330px 1fr 130px;gap:22px;align-items:center}
+.voce .et b{display:block;font:700 26px/1.1 var(--titoli);color:var(--ink)}
+.voce .et span{font-size:16px;line-height:1.35;color:var(--muto)}
+.voce .bar{height:22px;background:var(--acc-velo);border-radius:999px;overflow:hidden}
+.voce .bar i{display:block;height:100%;background:var(--acc);border-radius:999px}
+.voce .val{font:700 26px/1 var(--titoli);color:var(--acc);text-align:right}
+.voce .val small{display:block;font:500 14px/1.4 var(--mono);color:var(--tenue)}
 
 /* chiusura */
 .chiusura{background:var(--acc);color:#fff}
@@ -534,7 +559,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="payoff">Per i nutrizionisti che vendono traguardi</p>
     <p class="frase">Presentazione per gli investitori<br><b>Saverio D'Appio</b> · ottobre 2026</p>
   </div>
-  <div class="piede">Riservato · 01 / 14</div>
+  <div class="piede">Riservato · 01 / 16</div>
 </section>
 
 <!-- 02 · il problema -->
@@ -544,9 +569,9 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="kicker">Il problema</p>
     <h1>Venti sedie. <span class="ink">A marzo metà delle facce sono nuove.</span></h1>
     <p class="frase">Le pazienti mollano prima del traguardo, e lo studio ricomincia da capo.</p>
-    <div class="etichette stg"><span>Una prima visita dopo l'altra</span><span class="calda">Pagato a visita</span></div>
+    <div class="etichette stg"><span>Una prima visita dopo l'altra</span><span class="calda">Lo studio è pagato a visita</span></div>
   </div>
-  <div class="piede">Riservato · 02 / 14</div>
+  <div class="piede">Riservato · 02 / 16</div>
 </section>
 
 <!-- 03 · gli altri e noi, a listino -->
@@ -556,14 +581,14 @@ html,body{overflow-x:hidden;max-width:100%}
     <h1 style="font-size:56px;margin-bottom:34px">Tre soluzioni per lo studio. <span class="ink">Una sola porta la paziente al traguardo.</span></h1>
     <div class="tier3">
       <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-porta.jpg)"></div><div><div class="nm">Marketplace</div><div class="tg">MioDottore e simili · riempiono l'agenda</div></div></div>
-        <ul><li>Porta pazienti nuove</li><li class="no">Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
-      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-fotocopie.jpg)"></div><div><div class="nm">Gestionale</div><div class="tg">Software per lo studio · fanno risparmiare tempo</div></div></div>
-        <ul><li class="no">Porta pazienti nuove</li><li>Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Resta aperto</small>chi molla a metà percorso</div></div>
+        <ul><li>Porta pazienti nuove</li><li class="no">Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Si perde ancora</small>chi molla a metà percorso</div></div>
+      <div class="tier"><div class="testa"><div class="ic" style="background-image:url(img/v2-fotocopie.jpg)"></div><div><div class="nm">Gestionale</div><div class="tg">Software per lo studio · fa risparmiare tempo</div></div></div>
+        <ul><li class="no">Porta pazienti nuove</li><li>Piano e diario sul telefono</li><li class="no">Esagono: come lei tende a mollare</li><li class="no">Patto con traguardo e data</li><li class="no">Un assistente che la segue ogni giorno</li><li class="no">Lo studio vende un programma</li></ul><div class="esito"><small>Si perde ancora</small>chi molla a metà percorso</div></div>
       <div class="tier noi"><span class="nastro">Il metodo</span><div class="testa"><svg><use href="#logo"/></svg><div><div class="nm">Hexa<em>well</em></div><div class="tg">Per chi vende traguardi</div></div></div>
         <ul><li class="no" style="animation-delay:1.60s">Porta pazienti nuove</li><li style="animation-delay:1.78s">Piano e diario sul telefono</li><li style="animation-delay:1.96s">Esagono: come lei tende a mollare</li><li style="animation-delay:2.14s">Patto con traguardo e data</li><li style="animation-delay:2.32s">Un assistente che la segue ogni giorno</li><li style="animation-delay:2.50s">Lo studio vende un programma</li></ul><div class="esito"><small>La paziente</small>arriva al traguardo</div></div>
     </div>
   </div>
-  <div class="piede">Riservato · 03 / 14</div>
+  <div class="piede">Riservato · 03 / 16</div>
 </section>
 
 <!-- 05 · un traguardo ha una data -->
@@ -572,10 +597,10 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="corpo">
     <p class="kicker">La soluzione</p>
     <h1>Un traguardo ambizioso ha una data.</h1>
-    <p class="frase">Lo studio vende <b>un programma di 12 settimane</b> al posto della visita singola, con un patto firmato da tutti e due.</p>
-    <div class="etichette stg"><span>12 settimane</span><span>5 traguardi misurabili</span><span class="calda">1 data</span></div>
+    <p class="frase">Lo studio vende <b>un programma di 12 settimane</b> al posto della visita singola, con un patto firmato dallo studio e dalla paziente.</p>
+    <div class="etichette stg"><span>12 settimane</span><span>5 misure verificabili</span><span class="calda">1 data</span></div>
   </div>
-  <div class="piede">Riservato · 04 / 14</div>
+  <div class="piede">Riservato · 04 / 16</div>
 </section>
 
 <!-- 06 · 4 su 84 -->
@@ -583,12 +608,12 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="corpo largo">
     <p class="kicker">Come cambia lo studio</p>
     <h1>Da 4 giorni su 84 <span class="ink">a 84 su 84.</span></h1>
-    <div class="striscia" style="margin-top:20px"><div class="et"><b>Oggi</b><span>4 visite, e qualche messaggio sparso</span></div><div class="giorni" data-giorni="oggi"></div></div>
+    <div class="striscia" style="margin-top:20px"><div class="et"><b>Oggi</b><span>4 visite e qualche messaggio sparso</span></div><div class="giorni" data-giorni="oggi"></div></div>
     <div class="striscia"><div class="et"><b>Con Hexawell</b><span>ogni giorno un segnale, anche il silenzio</span></div><div class="giorni" data-giorni="hexa"></div></div>
-    <div class="etichette" style="margin-top:6px"><span>Pasti registrati</span><span>Chat con l'assistente</span><span class="calda">Silenzi contati</span><span class="calda">La settima settimana si vede quando c'è ancora tempo</span></div>
+    <div class="etichette" style="margin-top:6px"><span>Pasti registrati</span><span>Chat con l'assistente</span><span class="calda">Silenzi contati</span><span class="calda">La crisi della settima settimana si vede quando c'è ancora tempo</span></div>
     <p class="nota">Un quadratino per giorno, 12 settimane. Dimostrativo.</p>
   </div>
-  <div class="piede">Riservato · 05 / 14</div>
+  <div class="piede">Riservato · 05 / 16</div>
 </section>
 
 <!-- 07 · il metodo, animata -->
@@ -596,13 +621,13 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="mt">
     <p class="kicker">Il metodo</p>
     <h1>Dall'esagono al traguardo.</h1>
-    <div class="mt-track"><div class="mt-st"><i>1</i><span>Esagono</span></div><div class="mt-st"><i>2</i><span>Visita</span></div><div class="mt-st"><i>3</i><span>Patto</span></div><div class="mt-st"><i>4</i><span>Piano</span></div><div class="mt-st"><i>5</i><span>Tracce ⇄ feedback</span><small>× 12 SETTIMANE</small></div><div class="mt-st"><i>6</i><span>Traguardo</span></div></div>
+    <div class="mt-track"><div class="mt-st"><i>1</i><span>Esagono</span></div><div class="mt-st"><i>2</i><span>Visita</span></div><div class="mt-st"><i>3</i><span>Patto</span></div><div class="mt-st"><i>4</i><span>Piano</span></div><div class="mt-st"><i>5</i><span>Tracce e feedback</span><small>× 12 SETTIMANE</small></div><div class="mt-st"><i>6</i><span>Traguardo</span></div></div>
     <div class="mt-palco">
-      <div class="mt-sc mt-esa"><svg viewBox="-300 -205 600 410"><polygon points="0.0,-145.0 125.6,-72.5 125.6,72.5 0.0,145.0 -125.6,72.5 -125.6,-72.5" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-95.7 82.9,-47.8 82.9,47.8 0.0,95.7 -82.9,47.8 -82.9,-47.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-47.9 41.4,-23.9 41.4,23.9 0.0,47.9 -41.4,23.9 -41.4,-23.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="-145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><polygon class="forma" points="0.0,-95.7 69.1,-39.9 75.3,43.5 0.0,89.9 -37.7,21.7 -62.8,-36.3" fill="rgba(29,83,71,.22)" stroke="var(--acc)" stroke-width="4" stroke-linejoin="round"/><text x="0" y="-169" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Cibo</text><text x="152" y="-81" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Movimento</text><text x="152" y="93" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Corpo</text><text x="0" y="181" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Salute</text><text x="-152" y="93" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--segnale)">Testa</text><text x="-152" y="-82" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--muto)">Persone intorno</text><g class="corto"><circle class="p" cx="-37.7" cy="21.7" r="8" fill="none" stroke="var(--segnale)" stroke-width="3"/><circle cx="-37.7" cy="21.7" r="8" fill="var(--segnale)"/></g></svg><div class="mt-nota-esa">Il lato più corto<small>è da qui che si costruisce la disciplina, per prima.</small></div></div>
+      <div class="mt-sc mt-esa"><svg viewBox="-300 -205 600 410"><polygon points="0.0,-145.0 125.6,-72.5 125.6,72.5 0.0,145.0 -125.6,72.5 -125.6,-72.5" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-95.7 82.9,-47.8 82.9,47.8 0.0,95.7 -82.9,47.8 -82.9,-47.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><polygon points="0.0,-47.9 41.4,-23.9 41.4,23.9 0.0,47.9 -41.4,23.9 -41.4,-23.9" fill="none" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="-145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="0.0" y2="145.0" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="72.5" stroke="var(--linea)" stroke-width="1.5"/><line x1="0" y1="0" x2="-125.6" y2="-72.5" stroke="var(--linea)" stroke-width="1.5"/><polygon class="forma" points="0.0,-95.7 69.1,-39.9 75.3,43.5 0.0,89.9 -37.7,21.7 -62.8,-36.3" fill="rgba(29,83,71,.22)" stroke="var(--acc)" stroke-width="4" stroke-linejoin="round"/><text x="0" y="-169" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Cibo</text><text x="152" y="-81" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Movimento</text><text x="152" y="93" text-anchor="start" style="font:600 17px var(--titoli);fill:var(--muto)">Corpo</text><text x="0" y="181" text-anchor="middle" style="font:600 17px var(--titoli);fill:var(--muto)">Salute</text><text x="-152" y="93" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--segnale)">Testa</text><text x="-152" y="-82" text-anchor="end" style="font:600 17px var(--titoli);fill:var(--muto)">Persone intorno</text><g class="corto"><circle class="p" cx="-37.7" cy="21.7" r="8" fill="none" stroke="var(--segnale)" stroke-width="3"/><circle cx="-37.7" cy="21.7" r="8" fill="var(--segnale)"/></g></svg><div class="mt-nota-esa">Il lato più corto<small>è da qui che si comincia a costruire la disciplina.</small></div></div>
       <div class="mt-sc"><div class="foglio app"><em>Appunti della visita</em><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="freccia">→</div>
         <div class="foglio rep cl d1"><em>Per lo studio</em><b>Report clinico</b><i></i><i></i><i style="width:70%"></i><i></i><i style="width:60%"></i></div>
         <div class="foglio rep pz d2"><em>Per lei</em><b>Il tuo percorso</b><i></i><i style="width:80%"></i><i></i><i style="width:65%"></i><i></i></div></div>
-      <div class="mt-sc"><div class="mt-patto"><div class="r" style="transition-delay:0.30s"><b>Girovita</b><span class="og">96 cm</span><span class="fr">→</span><span class="tg">≤ 85 cm</span></div><div class="r" style="transition-delay:0.75s"><b>Massa grassa</b><span class="og">38,2 %</span><span class="fr">→</span><span class="tg">≤ 32 %</span></div><div class="r" style="transition-delay:1.20s"><b>Massa magra</b><span class="og">44,0 kg</span><span class="fr">→</span><span class="tg">≥ 42 kg</span></div><div class="r" style="transition-delay:1.65s"><b>Grasso viscerale</b><span class="og">12</span><span class="fr">→</span><span class="tg">≤ 8</span></div><div class="r" style="transition-delay:2.10s"><b>Idratazione</b><span class="og">44,5 %</span><span class="fr">→</span><span class="tg">≥ 48 %</span></div></div><div class="mt-data"><div>Traguardo<br>giorno 84</div><span>Obiettivo: 75%</span><div class="firme"><p>lo studio</p><p>la paziente</p></div></div></div>
+      <div class="mt-sc"><div class="mt-patto"><div class="r" style="transition-delay:0.30s"><b>Girovita</b><span class="og">96 cm</span><span class="fr">→</span><span class="tg">≤ 85 cm</span></div><div class="r" style="transition-delay:0.75s"><b>Massa grassa</b><span class="og">38,2%</span><span class="fr">→</span><span class="tg">≤ 32%</span></div><div class="r" style="transition-delay:1.20s"><b>Massa magra</b><span class="og">44,0 kg</span><span class="fr">→</span><span class="tg">≥ 42 kg</span></div><div class="r" style="transition-delay:1.65s"><b>Grasso viscerale</b><span class="og">12</span><span class="fr">→</span><span class="tg">≤ 8</span></div><div class="r" style="transition-delay:2.10s"><b>Idratazione</b><span class="og">44,5%</span><span class="fr">→</span><span class="tg">≥ 48%</span></div></div><div class="mt-data"><div>Traguardo<br>giorno 84</div><span>Obiettivo: 75%</span><div class="firme"><p>lo studio</p><p>la paziente</p></div></div></div>
       <div class="mt-sc"><div class="foglio" style="height:280px"><em>Il nutrizionista</em><b>Piano alimentare</b><i></i><i></i><i style="width:70%"></i><i></i><i style="width:55%"></i></div>
         <div class="link"><span class="freccia">→</span>un link</div>
         <div class="tel-p"><b>Il tuo piano</b><span>Colazione</span><span>Pranzo</span><span>Spuntino</span><span>Cena</span></div></div>
@@ -624,10 +649,10 @@ html,body{overflow-x:hidden;max-width:100%}
       <div class="mt-sc"><div class="mt-arrivo"><div class="riga"><span>Massa magra</span><div class="tr"><b></b><i data-w="100"></i></div><span class="val">100%</span></div><div class="riga"><span>Grasso viscerale</span><div class="tr"><b></b><i data-w="75"></i></div><span class="val">75%</span></div><div class="riga"><span>Idratazione</span><div class="tr"><b></b><i data-w="74"></i></div><span class="val">74%</span></div><div class="riga"><span>Massa grassa</span><div class="tr"><b></b><i data-w="66"></i></div><span class="val">66%</span></div><div class="riga"><span>Girovita</span><div class="tr"><b></b><i data-w="64"></i></div><span class="val">64%</span></div></div><div class="mt-media"><span class="n-media">0%</span><small>media · obiettivo 75%</small></div></div>
     </div>
     <div class="mt-cap"><div><p class="q"></p><h2></h2></div><p class="fr"></p></div>
-    <div class="mt-stampa"><div><b>1 · Prima della visita</b><h3>L'esagono, l'ossatura</h3><p>Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché.</p></div><div><b>2 · Giorno 1</b><h3>La visita</h3><p>Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei.</p></div><div><b>3 · Giorno 1</b><h3>Il patto</h3><p>Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori.</p></div><div><b>4 · Giorno 1</b><h3>Il piano</h3><p>Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare.</p></div><div><b>5 · Settimane 1-12</b><h3>Tracce e feedback: i muscoli</h3><p>L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana.</p></div><div><b>6 · Settimana 12</b><h3>Il traguardo</h3><p>Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%.</p></div></div>
-    <p class="mt-nota">Percorso dimostrativo di Laura B. L'assistente che agisce da solo e le interviste mirate si completano con la raccolta, insieme ai primi studi fondatori.</p>
+    <div class="mt-stampa"><div><b>1 · Prima della visita</b><h3>L'esagono, l'ossatura</h3><p>Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché.</p></div><div><b>2 · Giorno 1</b><h3>La visita</h3><p>Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei.</p></div><div><b>3 · Giorno 1</b><h3>Il patto</h3><p>Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori.</p></div><div><b>4 · Giorno 1</b><h3>Il piano</h3><p>Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare.</p></div><div><b>5 · Settimane 1-12</b><h3>Tracce e feedback: i muscoli</h3><p>L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana.</p></div><div><b>6 · Settimana 12</b><h3>Il traguardo</h3><p>Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura Bianchi arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%.</p></div></div>
+    <p class="mt-nota">Percorso dimostrativo di Laura Bianchi. L'assistente che agisce da solo e le interviste mirate si completano con la raccolta, insieme ai primi studi fondatori.</p>
   </div>
-  <div class="piede">Riservato · 06 / 14</div>
+  <div class="piede">Riservato · 06 / 16</div>
 </section>
 
 <!-- 12 · oggi e con la raccolta -->
@@ -641,9 +666,9 @@ html,body{overflow-x:hidden;max-width:100%}
       <div class="colonna poi"><h3>Quello che si costruisce</h3><p class="sub">Con la raccolta, insieme ai primi studi</p>
         <ul><li>Il traguardo su misura calcolato dal metodo, con la regola del 75%</li><li>L'assistente che agisce colore per colore e propone il correttivo al nutrizionista</li><li>Interviste mirate ogni settimana, e a fine ciclo anche a voce</li><li>Si scelgono 5-6 funzioni con i primi studi, e si tengono le 3 che funzionano sul serio</li></ul></div>
     </div>
-    <p class="nota">Laura Bianchi è la paziente dimostrativa: schermate e documenti sono del sistema vero, sul suo percorso.</p>
+    <p class="nota">Laura Bianchi è la paziente dimostrativa: i dati e i documenti mostrati sono del sistema vero, sul suo percorso.</p>
   </div>
-  <div class="piede">Riservato · 07 / 14</div>
+  <div class="piede">Riservato · 07 / 16</div>
 </section>
 
 <!-- 08 · cosa cambia per lo studio -->
@@ -653,26 +678,30 @@ html,body{overflow-x:hidden;max-width:100%}
     <h1>Lo studio che ne esce.</h1>
     <div class="cambia3 stg">
       <div><svg viewBox="0 0 120 90"><rect x="6" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="6" y="56" width="4" height="22" fill="var(--acc)"/><rect x="22" y="56" width="4" height="22" fill="var(--acc)"/><rect x="34" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="34" y="56" width="4" height="22" fill="var(--acc)"/><rect x="50" y="56" width="4" height="22" fill="var(--acc)"/><rect x="62" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="62" y="56" width="4" height="22" fill="var(--acc)"/><rect x="78" y="56" width="4" height="22" fill="var(--acc)"/><rect x="90" y="34" width="20" height="20" rx="4" fill="var(--acc)"/><rect x="90" y="56" width="4" height="22" fill="var(--acc)"/><rect x="106" y="56" width="4" height="22" fill="var(--acc)"/></svg><p class="n">1 · Le pazienti</p><h3>Meno pazienti, più fedeli</h3><p>Restano fino al traguardo, e tornano. Meno prime visite da rifare da capo ogni mese.</p></div>
-      <div class="verde"><svg viewBox="0 0 120 90"><rect x="4" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="4" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="50" width="15" height="24" rx="3" fill="var(--segnale)"/><rect x="2" y="2" width="116" height="10" rx="3" fill="#fff" opacity=".9"/></svg><p class="n">2 · Cosa si vende</p><h3>Il programma, al posto della visita</h3><p>Dodici settimane pagate all'inizio: incasso certo e valore percepito più alto (+30%, nostra stima).</p></div>
+      <div class="verde"><svg viewBox="0 0 120 90"><rect x="4" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="20" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="4" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="23" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="42" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="61" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="80" y="50" width="15" height="24" rx="3" fill="#CFE3DA"/><rect x="99" y="50" width="15" height="24" rx="3" fill="var(--segnale)"/><rect x="2" y="2" width="116" height="10" rx="3" fill="#fff" opacity=".9"/></svg><p class="n">2 · Cosa si vende</p><h3>Il programma, al posto della visita</h3><p>12 settimane pagate all'inizio: incasso certo e valore percepito più alto (+30%, nostra stima).</p></div>
       <div><svg viewBox="0 0 120 90"><circle cx="60" cy="45" r="40" fill="none" stroke="var(--acc)" stroke-width="6"/><circle cx="60" cy="45" r="25" fill="none" stroke="var(--acc)" stroke-width="6"/><circle cx="60" cy="45" r="9" fill="var(--segnale)"/></svg><p class="n">3 · Il posizionamento</p><h3>Obiettivi decisi con la paziente</h3><p>Il nutrizionista lavora su traguardi concordati, con una data. Lo studio si fa riconoscere per i risultati.</p></div>
     </div>
   </div>
-  <div class="piede">Riservato · 08 / 14</div>
+  <div class="piede">Riservato · 08 / 16</div>
 </section>
 
 <!-- 10 · modello di business -->
 <section class="slide scura">
   <div class="corpo largo">
     <p class="kicker">Il modello di business</p>
-    <h1>Lo studio paga un canone <span class="ink">e un programma a paziente.</span></h1>
+    <h1 style="margin-bottom:30px">Lo studio paga un canone <span class="ink">e una quota per ogni paziente.</span></h1>
     <div class="numeri stg">
-      <div class="numero"><div class="v"><span class="conta" data-a="39">39</span> €</div><div class="k">al mese, il canone di studio</div></div>
-      <div class="numero"><div class="v"><span class="conta" data-a="12">12</span> €</div><div class="k">al mese per ogni paziente nel programma</div></div>
-      <div class="numero calda"><div class="v">−<span class="conta" data-a="30">30</span>%</div><div class="k">listino fondatori, per 24 mesi</div></div>
+      <div class="numero"><div class="v" style="font-size:88px"><span class="conta" data-a="39">39</span> €</div><div class="k">al mese, il canone dello studio</div></div>
+      <div class="numero"><div class="v" style="font-size:88px"><span class="conta" data-a="12">12</span> €</div><div class="k">al mese per ogni paziente nel programma</div></div>
+      <div class="numero calda"><div class="v" style="font-size:88px">−<span class="conta" data-a="30">30</span>%</div><div class="k">listino fondatori, per 24 mesi</div></div>
     </div>
-    <p class="nota" style="font-size:22px;margin-top:44px">Esempio: uno studio con 30 pazienti attive = 39 € + 30 × 12 € = <b style="color:var(--ink)">399 € al mese</b>.</p>
+    <div class="ue stg">
+      <div><p class="t">Lo studio che vende il programma</p><p class="r"><b>20 pazienti</b> · 279 € al mese · costo vivo 50 € · <b>margine 79%</b></p></div>
+      <div><p class="t">Lo studio che lo usa al posto del gestionale</p><p class="r"><b>8 pazienti</b> · 135 € al mese · costo vivo 20 € · <b>margine 82%</b></p></div>
+    </div>
+    <p class="nota" style="margin-top:18px">Costo vivo = intelligenza artificiale, messaggi e server: 2,50 € per paziente al mese, il doppio del calcolo sui listini dei fornitori. Con il listino fondatori il margine resta sopra il 70%.</p>
   </div>
-  <div class="piede">Riservato · 09 / 14</div>
+  <div class="piede">Riservato · 09 / 16</div>
 </section>
 
 <!-- 11 · chi cerchiamo -->
@@ -682,14 +711,14 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="kicker">Chi cerchiamo</p>
     <h1 style="font-size:58px">Il nutrizionista stanco di vendere la visita singola.</h1>
     <ul class="tratti stg">
-      <li><span><b>Un innovatore</b>: si è già scelto un verticale, come la menopausa o lo sport, e produce contenuti seri.</span></li>
+      <li><span><b>Un innovatore</b>: si è già scelto una specializzazione, come la menopausa o lo sport, e produce contenuti seri.</span></li>
       <li><span><b>Vuole riposizionarsi</b>: vendere un programma, con un risultato raggiungibile scritto in un patto.</span></li>
-      <li><span><b>Cerca un framework motivazionale</b> che va oltre la singola consulenza nutrizionale.</span></li>
+      <li><span><b>Cerca un framework motivazionale</b> che vada oltre la singola consulenza nutrizionale.</span></li>
     </ul>
     <div class="barra" style="font-size:24px">È il nostro investitore e il nostro primo cliente: chi mette la firma adotta il metodo.</div>
     <p class="nota">Il bacino: circa 23-26 mila nutrizionisti in Italia (stima su dati ONB 2025).</p>
   </div>
-  <div class="piede">Riservato · 10 / 14</div>
+  <div class="piede">Riservato · 10 / 16</div>
 </section>
 
 <!-- 12 · chi c'è -->
@@ -699,35 +728,78 @@ html,body{overflow-x:hidden;max-width:100%}
     <h1 style="font-size:60px;margin-bottom:26px">Chi c'è, e chi ha costruito il metodo.</h1>
     <p class="sez-t">La squadra</p>
     <div class="squadra stg">
-      <div class="pers io"><div class="ini">SD</div><div><p class="ru">Founder · prodotto e sviluppo</p><h3>Saverio D'Appio</h3><p>Trent'anni d'impresa. Ogni strumento lo prova prima su di sé.</p></div></div>
-      <div class="pers"><div class="ini">DB</div><div><p class="ru">Sales manager · socio al 10%</p><h3>Danilo Brunetti</h3><p>Porta Hexawell negli studi: la vendita e il rapporto con i nutrizionisti.</p></div></div>
+      <div class="pers io"><div class="ini">SD</div><div><p class="ru">Fondatore · prodotto e sviluppo</p><h3>Saverio D'Appio</h3><p>Trent'anni d'impresa, due locali di proprietà a Roma. Ha costruito il sistema e lo ha messo alla prova per 18 mesi con A Better Way.</p></div></div>
+      <div class="pers"><div class="ini">DB</div><div><p class="ru">Responsabile vendite · socio al 10%</p><h3>Danilo Brunetti</h3><p>Porta Hexawell negli studi: la vendita e il rapporto con i nutrizionisti.</p></div></div>
       <div class="pers"><div class="ini">SC</div><div><p class="ru">Brand ambassador</p><h3>Simona Costantini</h3><p>La voce di Hexawell verso le pazienti e verso i professionisti.</p></div></div>
     </div>
-    <p class="sez-t">Hanno costruito il metodo e l'app con noi</p>
+    <p class="sez-t">Hanno costruito il metodo e il sistema con noi</p>
     <div class="contributi stg">
       <div class="mini"><div class="ini">MV</div><p class="ru">Counselor e psicologa</p><h3>Monica Ventre</h3><p>Il framework della disciplina: come si legge una paziente che cambia.</p></div>
-      <div class="mini"><div class="ini">ET</div><p class="ru">Mental coach</p><h3>Eva Toscano</h3><p>Il framework della disciplina e il questionario d'ingresso.</p></div>
+      <div class="mini"><div class="ini">ET</div><p class="ru">Mental coach</p><h3>Eva Toscano</h3><p>Il questionario d'ingresso e l'intervista che orienta la paziente fin dal primo giorno.</p></div>
       <div class="mini"><div class="ini">FT</div><p class="ru">Personal trainer</p><h3>Fabrizio Transerici</h3><p>I piani di allenamento e il movimento nell'esagono.</p></div>
       <div class="mini"><div class="ini">ES</div><p class="ru">Biologa nutrizionista</p><h3>Eleonora Spina</h3><p>I piani e il cruscotto: come lo studio si innesta sulla disciplina.</p></div>
-      <div class="mini"><div class="ini">EC</div><p class="ru">Nutrizionista</p><h3>Emanuela Casaldi</h3><p>Piani e cruscotto messi alla prova sulle pazienti della beta.</p></div>
+      <div class="mini"><div class="ini">EC</div><p class="ru">Nutrizionista</p><h3>Emanuela Casaldi</h3><p>Piani e cruscotto messi alla prova sulle pazienti della prima fase di prova.</p></div>
     </div>
   </div>
-  <div class="piede">Riservato · 11 / 14</div>
+  <div class="piede">Riservato · 11 / 16</div>
+</section>
+
+<!-- 12 · i numeri a tre anni -->
+<section class="slide marca">
+  <div class="corpo largo" style="padding:56px 110px 76px">
+    <p class="kicker">Il piano a tre anni</p>
+    <h1 style="font-size:58px;margin-bottom:30px">Due scenari, <span class="ink">un round solo.</span></h1>
+    <div class="scenari stg">
+      <div class="scen"><p class="nm">Prudente</p>
+        <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
+          <tr><td>Studi attivi a fine anno</td><td>22</td><td>41</td><td>70</td></tr>
+          <tr><td>Ricavi</td><td>18 k€</td><td>55 k€</td><td>106 k€</td></tr>
+          <tr><td>Risultato operativo</td><td class="neg">−34 k€</td><td class="neg">−18 k€</td><td class="neg">−17 k€</td></tr></table>
+        <p class="fondo">Pareggio mensile al <b>mese 36</b> · cassa minima <b>2.900 €</b></p></div>
+      <div class="scen base"><p class="nm">Base</p>
+        <table><tr><th></th><th>Anno 1</th><th>Anno 2</th><th>Anno 3</th></tr>
+          <tr><td>Studi attivi a fine anno</td><td>39</td><td>77</td><td>133</td></tr>
+          <tr><td>Ricavi</td><td>43 k€</td><td>133 k€</td><td>265 k€</td></tr>
+          <tr><td>Risultato operativo</td><td class="neg">−16 k€</td><td>+42 k€</td><td>+109 k€</td></tr></table>
+        <p class="fondo">Pareggio mensile al <b>mese 10</b> · cassa minima <b>54.500 €</b></p></div>
+    </div>
+    <p class="nota" style="margin-top:22px;line-height:1.5">Ipotesi: 15-25 studi fondatori, poi da 2 a 8 studi nuovi al mese. 15-20 pazienti per lo studio che vende il programma, 6-8 per chi lo usa come gestionale. Abbandono degli studi dal 2 al 6,4% al mese (6,4% è la media del software venduto alle piccole attività). Margine lordo 75-82%. Costi fissi da 4.000 a 8.600 € al mese; il modello non prevede compensi per i soci.</p>
+  </div>
+  <div class="piede">Riservato · 12 / 16</div>
+</section>
+
+<!-- 13 · uso dei fondi -->
+<section class="slide marca">
+  <div class="corpo largo">
+    <p class="kicker">Uso dei fondi</p>
+    <h1 style="margin-bottom:40px">A cosa servono <span class="ink">i 72.500 €.</span></h1>
+    <div class="fondi">
+      <div class="voci stg">
+        <div class="voce"><div class="et"><b>Sviluppo</b><span>le funzioni nuove, costruite con i primi studi</span></div><div class="bar"><i style="width:100%"></i></div><div class="val">25.000 €<small>34%</small></div></div>
+        <div class="voce"><div class="et"><b>Acquisizione</b><span>video, demo, incontri, campagne verso i nutrizionisti</span></div><div class="bar"><i style="width:88%"></i></div><div class="val">22.000 €<small>30%</small></div></div>
+        <div class="voce"><div class="et"><b>Affiancamento</b><span>i professionisti del metodo accanto ai primi studi</span></div><div class="bar"><i style="width:48%"></i></div><div class="val">12.000 €<small>17%</small></div></div>
+        <div class="voce"><div class="et"><b>Legale e privacy</b><span>dati sanitari, contratti, amministrazione</span></div><div class="bar"><i style="width:30%"></i></div><div class="val">7.500 €<small>10%</small></div></div>
+        <div class="voce"><div class="et"><b>Infrastruttura</b><span>server e intelligenza artificiale per 18 mesi</span></div><div class="bar"><i style="width:24%"></i></div><div class="val">6.000 €<small>8%</small></div></div>
+      </div>
+      <div class="barra" style="font-size:25px;align-self:center">Anche nello scenario prudente la cassa resta sopra zero per 36 mesi: con questa raccolta Hexawell arriva al pareggio.</div>
+    </div>
+  </div>
+  <div class="piede">Riservato · 13 / 16</div>
 </section>
 
 <!-- 13 · dove siamo, dove andiamo -->
 <section class="slide marca">
   <div class="corpo largo">
-    <p class="kicker">Stato e roadmap</p>
+    <p class="kicker">Stato e tappe</p>
     <h1>Dove siamo, dove andiamo.</h1>
     <div class="tempo stg">
       <div class="tappa"><p class="quando">Oggi</p><h3>In produzione</h3><p>Esagono, report, diario, assistente e cruscotto, su pazienti vere.</p></div>
-      <div class="tappa dopo"><p class="quando">Q4 2026</p><h3>Campagna fondatori</h3><p>72.500 € e i primi studi fondatori. <span class="tbd">quanti</span></p></div>
+      <div class="tappa dopo"><p class="quando">Ottobre-dicembre 2026</p><h3>Campagna fondatori</h3><p>72.500 € e i primi 15-25 studi fondatori.</p></div>
       <div class="tappa dopo"><p class="quando">Dopo la raccolta</p><h3>Con i primi studi</h3><p>Traguardo calcolato, assistente che agisce, interviste: si costruiscono con loro.</p></div>
-      <div class="tappa dopo"><p class="quando">Poi</p><h3>Altre professioni</h3><p>Personal trainer e mental coach sullo stesso percorso. <span class="tbd">da decidere</span></p></div>
+      <div class="tappa dopo"><p class="quando">Poi</p><h3>Altre professioni</h3><p>Personal trainer e mental coach sullo stesso percorso, quando i numeri dei nutrizionisti lo confermano.</p></div>
     </div>
   </div>
-  <div class="piede">Riservato · 12 / 14</div>
+  <div class="piede">Riservato · 14 / 16</div>
 </section>
 
 <!-- 14 · l'operazione -->
@@ -736,16 +808,16 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="kicker">L'operazione</p>
     <div class="grande" style="font-size:200px"><span class="conta" data-a="72500">72.500</span> €</div>
     <div class="termini stg">
-      <div class="termine"><p class="k">Società</p><div class="v">SRL a Roma, startup innovativa</div></div>
-      <div class="termine"><p class="k">Strumento</p><div class="v">equity, SFP o SAFE <span class="tbd">da decidere</span></div></div>
-      <div class="termine"><p class="k">Quota · valutazione · ticket</p><div class="v"><span class="tbd">da Consolato / Simatica</span></div></div>
-      <div class="termine"><p class="k">Vantaggio fiscale</p><div class="v">detrazione startup innovativa <span class="tbd">aliquota</span></div></div>
-      <div class="termine"><p class="k">Grant Lazio</p><div class="v">possibile leva, non conteggiata</div></div>
-      <div class="termine"><p class="k">Chiusura</p><div class="v"><span class="tbd">data</span></div></div>
+      <div class="termine"><p class="k">Società</p><div class="v">Srl a Roma, startup innovativa</div></div>
+      <div class="termine"><p class="k">Strumento</p><div class="v da-def">Da definire</div></div>
+      <div class="termine"><p class="k">Quota · valutazione · taglio minimo</p><div class="v da-def">Da definire</div></div>
+      <div class="termine"><p class="k">Vantaggio fiscale</p><div class="v">Detrazione per chi investe in startup innovative</div></div>
+      <div class="termine"><p class="k">Bando Regione Lazio</p><div class="v">Possibile leva, non conteggiata</div></div>
+      <div class="termine"><p class="k">Chiusura</p><div class="v da-def">Da definire</div></div>
     </div>
-    <p class="nota" style="font-size:19px;margin-top:30px">A cosa servono: portare il metodo nei primi studi fondatori, costruire con loro le funzioni nuove, acquisire i primi clienti paganti. <span class="tbd">ripartizione</span></p>
+    <p class="nota" style="font-size:19px;margin-top:30px">A cosa servono: portare il metodo nei primi studi fondatori, costruire con loro le funzioni nuove, acquisire i primi clienti paganti. La ripartizione è nella slide 13.</p>
   </div>
-  <div class="piede">Riservato · 13 / 14</div>
+  <div class="piede">Riservato · 15 / 16</div>
 </section>
 
 <!-- 15 · perché adesso -->
@@ -754,9 +826,9 @@ html,body{overflow-x:hidden;max-width:100%}
     <p class="kicker">Perché adesso</p>
     <p class="cerchio">Un traguardo ambizioso ha una data.<br>La strada per arrivarci si costruisce con un patto.</p>
     <p class="missione">Hexawell dà ai nutrizionisti lo strumento per vendere traguardi ambiziosi, e alle loro pazienti la disciplina e il metodo scientifico per raggiungerli.</p>
-    <div class="firma"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Founder<br>saverio.dappio@gmail.com</span></div>
+    <div class="firma"><svg><use href="#logo"/></svg><span>Saverio D'Appio · Fondatore<br>saverio.dappio@gmail.com</span></div>
   </div>
-  <div class="piede">Riservato · 14 / 14</div>
+  <div class="piede">Riservato · 16 / 16</div>
 </section>
 
 <script>
@@ -771,7 +843,7 @@ document.querySelectorAll('[data-giorni]').forEach(g => {
 });
 
 // ---- slide animata «Il metodo»: 6 fasi, circa 1:50
-const FASI = [["Prima della visita", "L'esagono, l'ossatura", "Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché."], ["Giorno 1", "La visita", "Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei."], ["Giorno 1", "Il patto", "Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori."], ["Giorno 1", "Il piano", "Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare."], ["Settimane 1-12", "Tracce e feedback", "L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana."], ["Settimana 12", "Il traguardo", "Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%."]];
+const FASI = [["Prima della visita", "L'esagono, l'ossatura", "Sei grandezze: cibo, movimento, corpo, salute, testa, persone intorno. Insieme dicono come quella paziente tende a mollare: quando, dove, perché."], ["Giorno 1", "La visita", "Il nutrizionista scrive gli appunti come vengono. Ne escono due report: quello clinico per lo studio, quello che motiva lei."], ["Giorno 1", "Il patto", "Obiettivi concordati insieme, con una data: cinque misure verificabili, il traguardo su misura. Il peso resta fuori."], ["Giorno 1", "Il piano", "Il piano lo scrive il nutrizionista, come oggi. A lei arriva un link: niente app da installare."], ["Settimane 1-12", "Tracce e feedback", "L'assistente parla con lei, legge comportamenti, comunicazioni e silenzi, e agisce. I muscoli dell'esagono crescono con la ripetizione, settimana dopo settimana."], ["Settimana 12", "Il traguardo", "Il patto si rilegge riga per riga. Nel percorso dimostrativo Laura Bianchi arriva al 76% del traguardo su misura, oltre l'obiettivo del 75%."]];
 const DURATE = [14, 14, 16, 10, 38, 16];
 const BASE = [0.66, 0.55, 0.6, 0.62, 0.3, 0.5], FINE = [0.9, 0.82, 0.86, 0.85, 0.7, 0.78];
 const M = document.getElementById('metodo');
